@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../contexts/globalContext";
 import { BookTradeRequests } from "./BookTradeRequests";
+import { Link } from "react-router-dom";
 
 class BookDetails extends React.Component {
   static contextType = Context;
@@ -61,8 +61,9 @@ class BookDetails extends React.Component {
   };
 
   render() {
+    const { location } = this.props;
     return (
-      <>
+      <div className="bounds-content">
         {/* Page Title */}
         <div className="page-title">
           <h1>Book Details</h1>
@@ -70,28 +71,41 @@ class BookDetails extends React.Component {
         {/* Book Details */}
 
         {this.state.book ? (
-          <>
-            <dl className="book-details">
-              <dt className="book-details__name">Title:</dt>
-              <dd className="book-details__value">{this.state.book.title}</dd>
+          <div className="page-body">
+            <dl className="book-details ">
+              <dt className="book-details__name ">Title:</dt>
+              <dd className="book-details__value ">{this.state.book.title}</dd>
 
-              <dt className="book-details__name">Author:</dt>
-              <dd className="book-details__value">{this.state.book.author}</dd>
+              <dt className="book-details__name ">Author:</dt>
+              <dd className="book-details__value ">{this.state.book.author}</dd>
 
-              <dt className="book-details__name">Genre:</dt>
-              <dd className="book-details__value">{this.state.book.genre}</dd>
+              <dt className="book-details__name ">Genre:</dt>
+              <dd className="book-details__value ">{this.state.book.genre}</dd>
 
-              <dt className="book-details__name">Year:</dt>
-              <dd className="book-details__value">{this.state.book.year}</dd>
+              <dt className="book-details__name ">Year:</dt>
+              <dd className="book-details__value ">{this.state.book.year}</dd>
 
-              <dt className="book-details__name">Condition:</dt>
-              <dd className="book-details__value">
+              <dt className="book-details__name ">Condition:</dt>
+              <dd className="book-details__value ">
                 {this.state.book.condition}
               </dd>
 
-              <dt className="book-details__name">Comments:</dt>
-              <dd className="book-details__value">
+              <dt className="book-details__name ">Comments:</dt>
+              <dd className="book-details__value ">
                 {this.state.book.comments}
+              </dd>
+
+              <dt className="book-details__name ">Owner:</dt>
+              <dd className="book-details__value ">
+                <Link
+                  to={{
+                    pathname: `/users/${this.state.book.ownerId}`,
+                    state: { from: location }
+                  }}
+                >
+                  {" "}
+                  {this.state.book.owner.username}
+                </Link>
               </dd>
             </dl>
 
@@ -123,13 +137,13 @@ class BookDetails extends React.Component {
             ) : (
               ""
             )}
-          </>
+          </div>
         ) : (
           ""
         )}
         {/* show trade requests that include this book. pass 'bookId' */}
         <BookTradeRequests bookId={this.props.match.params.id} />
-      </>
+      </div>
     );
   }
 }

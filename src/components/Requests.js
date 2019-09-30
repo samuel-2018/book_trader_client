@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../contexts/globalContext";
 import { Request } from "./Request";
 
@@ -36,115 +35,97 @@ class Requests extends React.Component {
     this.loadRequests();
   };
 
+  onClickNew = () => {
+    this.props.history.push("/newbook");
+  };
+
+  getRequests(requestList) {
+    return requestList.length ? (
+      requestList.map(request => {
+        return (
+          <Request
+            key={`request-${request.requestId}`}
+            requestData={request}
+            // If user is not signed in, set value to null.
+            currentUserId={this.context.user ? this.context.user.userId : null}
+            reloadCb={this.reloadCb}
+            renderedByThis={this}
+          />
+        );
+      })
+    ) : (
+      <div className="box-title request__body request message-box__partual">
+        Nothing Found
+      </div>
+    );
+  }
+
   render() {
     return (
-      <>
+      <div className="bounds-content">
+        {/* Section Title */}
+        <div className="page-title">
+          <h1>Requests</h1>
+        </div>
         {this.context.user ? (
           // User signed in
-          <>
-            {/* Section Title */}
+
+          <div className="page-body">
+            {/* Section Sub Title */}
+
             <div className="page-title">
-              <h1>Requests for your books</h1>
+              <h2>Requests for your books</h2>
             </div>
-            {/* Books List */}
+
+            {/* Request List */}
             <div>
-              {this.state.requests
-                .filter(request => {
+              {this.getRequests(
+                this.state.requests.filter(request => {
                   return request.requesteeId === this.context.user.userId;
                 })
-                .map(request => {
-                  return (
-                    <Request
-                      key={`request-${request.requestId}`}
-                      requestData={request}
-                      currentUserId={this.context.user.userId}
-                      reloadCb={this.reloadCb}
-                      renderedByThis={this}
-                    />
-                  );
-                })}
+              )}
             </div>
-            {/* Section Title */}
+            {/* Section  Sub Title */}
             <div className="page-title">
-              <h1>Your requests for books</h1>
+              <h2>Your requests for books</h2>
             </div>
-            {/* Books List */}
+            {/* Request List */}
             <div>
-              {this.state.requests
-                .filter(request => {
+              {this.getRequests(
+                this.state.requests.filter(request => {
                   return request.requesterId === this.context.user.userId;
                 })
-                .map(request => {
-                  return (
-                    <Request
-                      key={`request-${request.requestId}`}
-                      requestData={request}
-                      currentUserId={this.context.user.userId}
-                      reloadCb={this.reloadCb}
-                      renderedByThis={this}
-                    />
-                  );
-                })}
+              )}
             </div>
-            {/* Section Title */}
+            {/* Section Sub Title */}
             <div className="page-title">
-              <h1>All other requests</h1>
-              {/* Books List */}
+              <h2>All other requests</h2>
+              {/* Request List */}
               <div>
-                {this.state.requests
-                  .filter(request => {
+                {this.getRequests(
+                  this.state.requests.filter(request => {
                     return (
                       request.requesteeId !== this.context.user.userId &&
                       request.requesterId !== this.context.user.userId
                     );
                   })
-                  .map(request => {
-                    return (
-                      <Request
-                        key={`request-${request.requestId}`}
-                        requestData={request}
-                        currentUserId={this.context.user.userId}
-                        reloadCb={this.reloadCb}
-                        renderedByThis={this}
-                      />
-                    );
-                  })}
+                )}
               </div>
             </div>
-          </>
+          </div>
         ) : (
           // User not signed in
-          // Books List
-          <div>
-            {this.state.requests.map(request => {
-              return (
-                <Request
-                  key={`request-${request.requestId}`}
-                  requestData={request}
-                  currentUserId={null}
-                  reloadCb={this.reloadCb}
-                  renderedByThis={this}
-                />
-              );
-            })}
+          // Request List
+          <div className="page-body">
+            {this.getRequests(this.state.requests)}
           </div>
         )}
 
         {/* Create New Book Button */}
-        <div className="button">
-          <Link
-            to={{
-              pathname: `/newbook`,
-              state: { from: this.props.location }
-            }}
-          >
-            <h3>
-              <i className="fas fa-plus"></i>
-              Create New Book
-            </h3>
-          </Link>
-        </div>
-      </>
+        {/* <button className="button" onClick={this.onClickNew}>
+          <i className="fas fa-plus"></i> Create New Book
+        </button> */}
+      </div>
     );
   }
 }

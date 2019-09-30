@@ -1,7 +1,6 @@
 import { sendRequest } from "../helpers/sendRequest";
 import { handleError } from "../helpers/handleError";
 import { validationMessages } from "../helpers/validationMessages";
-import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 import React from "react";
 const Context = React.createContext();
@@ -77,7 +76,7 @@ class Provider extends React.Component {
       });
       return result.data;
     } catch (error) {
-      handleError.call(this, { error });
+      throw error;
     }
   };
 
@@ -108,6 +107,7 @@ class Provider extends React.Component {
   };
 
   onSignIn = async ({ username, password }) => {
+    // try {
     // Get user data from API
     const user = await this.getUserAPI({ username, password });
     // Set cookie
@@ -122,6 +122,11 @@ class Provider extends React.Component {
     this.setUserLocal({ user });
 
     // Caller handles errors.
+    // } catch (error) {
+    //   console.log(error);
+
+    //   throw error;
+    // }
   };
 
   onSignOut = () => {

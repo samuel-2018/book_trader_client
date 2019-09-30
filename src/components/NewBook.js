@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../contexts/globalContext";
 import { PrivateRoute } from "./PrivateRoute";
 
@@ -55,7 +54,7 @@ class NewBook extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="bounds-content">
         {/* Page Title */}
         <div className="page-title">
           <h1>New Book</h1>
@@ -66,7 +65,10 @@ class NewBook extends React.Component {
 
         {/* Form */}
 
-        <form onSubmit={this.onFormSubmit}>
+        <form
+          onSubmit={this.onFormSubmit}
+          className="text-primary font-primary"
+        >
           <label className="label">
             Title <br />
             <input
@@ -124,10 +126,14 @@ class NewBook extends React.Component {
             />
           </label>
 
-          <button type="submit">Submit</button>
-          <button onClick={this.onCancel}>Cancel</button>
+          <button type="submit" className="button">
+            Submit
+          </button>
+          <button onClick={this.onCancel} className="button">
+            Cancel
+          </button>
         </form>
-      </>
+      </div>
     );
   }
 }

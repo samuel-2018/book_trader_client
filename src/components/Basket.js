@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../contexts/globalContext";
 import { Book } from "./Book";
 import { PrivateRoute } from "./PrivateRoute";
@@ -117,37 +116,52 @@ class Basket extends React.Component {
 
   render() {
     return (
-      <section className="request">
-        <div className="request__body">
-          <div className="request__body__wants">
-            <h3>Books I Want</h3>
-            {/* Books List */}
-            <div>
-              {this.state.takeBooks.map(book => {
-                return (
-                  <Book key={`book-${book.bookId}-basket`} bookData={book} />
-                );
-              })}
-            </div>
-          </div>
-          <div className="request__body__offers">
-            <h3>Books I'm Offering</h3>
-            {/* Books List */}
-            <div>
-              {this.state.giveBooks.map(book => {
-                return (
-                  <Book key={`book-${book.bookId}-basket`} bookData={book} />
-                );
-              })}
-            </div>
-          </div>
+      <div className="bounds-content">
+        {/* Section Title */}
 
-          {!this.state.isOneTrader ? (
-            <div>You can only trade with one person per trade request.</div>
-          ) : (
-            ""
-          )}
-          {!this.state.isRealTrade ? <div>That's not a fair trade!</div> : ""}
+        <div className="page-title">
+          <h1>Trading Basket</h1>
+        </div>
+
+        <section className="basket page-body">
+          <div className="basket__body">
+            <div className="basket__body__wants">
+              <h3 className="box-title">Books I Want</h3>
+              {/* Books List */}
+              <div>
+                {this.state.takeBooks.map(book => {
+                  return (
+                    <Book key={`book-${book.bookId}-basket`} bookData={book} />
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="basket__body__offers">
+              <h3 className="box-title">Books I'm Offering</h3>
+              {/* Books List */}
+              <div>
+                {this.state.giveBooks.map(book => {
+                  return (
+                    <Book key={`book-${book.bookId}-basket`} bookData={book} />
+                  );
+                })}
+              </div>
+            </div>
+
+            {!this.state.isOneTrader ? (
+              <div className="box-title">
+                You can only trade with one person per trade request.
+              </div>
+            ) : (
+              ""
+            )}
+            {!this.state.isRealTrade ? (
+              <div className="box-title">That's not a fair trade!</div>
+            ) : (
+              ""
+            )}
+          </div>
 
           <div className="buttons">
             <button className="button" onClick={this.onSubmit}>
@@ -158,8 +172,8 @@ class Basket extends React.Component {
               Home
             </button>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     );
   }
 }

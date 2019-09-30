@@ -1,32 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../contexts/globalContext";
 
 export const Book = props => {
   return (
-    <div className="book">
-      <Link
-        to={{
-          pathname: `/books/${props.bookData.bookId}`,
-          // TODO test, the book component may need props passed to it.
-          state: { from: props.location }
-        }}
-      >
+    <Link
+      className="no-decoration"
+      to={{
+        pathname: `/books/${props.bookData.bookId}`,
+        // TODO test, the book component may need props passed to it.
+        state: { from: props.location }
+      }}
+    >
+      <div className="book">
         <div className="book__info">
-          <p className="book__info__title">{props.bookData.title}</p>
-          <p className="book__info__author">{props.bookData.author}</p>
-          <p className="book__info__owner">{`from ${props.bookData.owner.username} in ${props.bookData.owner.city}, ${props.bookData.owner.state}, ${props.bookData.owner.country}`}</p>
+          <p className="book__info__title pad-s">{props.bookData.title}</p>
+          <p className="book__info__author pad-s">{props.bookData.author}</p>
+          <p className="book__info__owner pad-s">{`from ${props.bookData.owner.username} in ${props.bookData.owner.city}, ${props.bookData.owner.state}, ${props.bookData.owner.country}`}</p>
         </div>
+
         <div className="book__requests">
-          <i className="book__requests__icon fas fa-comments" />
+          <i className="book__requests__icon fas fa-comments pad-s" />
+
           <div className="book__requests__info">
-            <p className="book__requests__count">
+            <p className="book__requests__count pad-s">
               {props.bookData.takeBooksRequest.length}
             </p>
+
             <div className="book__requests__usernames">
               {props.bookData.takeBooksRequest.map(request => {
                 return (
-                  <p key={`requester-${request.requesterId}`}>
+                  <p
+                    className="book__requests__usernames__name pad-s"
+                    // key={`book-${props.bookData.bookId}-requester-${request.requesterId}-transactionId-${props.transactionId}`}
+                  >
                     {request.requester.username}
                   </p>
                 );
@@ -34,7 +40,7 @@ export const Book = props => {
             </div>
           </div>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };

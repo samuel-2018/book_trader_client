@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../contexts/globalContext";
 import { sendRequest } from "../helpers/sendRequest";
 import { Book } from "./Book";
@@ -65,35 +64,44 @@ export const Request = props => {
     <section className="request" key={`request-${requestId}`}>
       <div className="request__requester">
         <i className="request__requester__picture fas fa-user-circle"></i>
-        <p className="request__requester__username">{requester.username}</p>
+
+        <p className="request__requester__username text-primary font-primary">
+          {requester.username}
+        </p>
       </div>
-      <div className="request__body">
-        <div className="request__body__wants">
-          <h3>Wants</h3>
-          {/* Books List */}
-          <div>
-            {takeBooksRequest.map(book => {
-              return (
-                <Book
-                  key={`book-${book.bookId}request-${requestId}`}
-                  bookData={book}
-                />
-              );
-            })}
+
+      <div className="request__body message-box__partual">
+        <div className="request__body__wrapper">
+          <div className="request__body__wants">
+            <h3 className="box-title">Wants</h3>
+            {/* Books List */}
+            <div>
+              {takeBooksRequest.map(book => {
+                return (
+                  <Book
+                    key={`book-${book.bookId}request-${requestId}`}
+                    bookData={book}
+                    // transactionId={requestId}
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
-        <div className="request__body__offers">
-          <h3>Offers</h3>
-          {/* Books List */}
-          <div>
-            {giveBooksRequest.map(book => {
-              return (
-                <Book
-                  key={`book-${book.bookId}request-${requestId}`}
-                  bookData={book}
-                />
-              );
-            })}
+
+          <div className="request__body__offers">
+            <h3 className="box-title">Offers</h3>
+            {/* Books List */}
+            <div>
+              {giveBooksRequest.map(book => {
+                return (
+                  <Book
+                    key={`book-${book.bookId}request-${requestId}`}
+                    bookData={book}
+                    // transactionId={requestId}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
         <div className="buttons">

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../contexts/globalContext";
 
 class SignUp extends React.Component {
@@ -53,9 +52,9 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="bounds-content">
         {/* Page Title */}
-        <div className="page-title">
+        <div className="page-title text-primary font-primary">
           <h1>Sign Up</h1>
         </div>
 
@@ -64,7 +63,10 @@ class SignUp extends React.Component {
 
         {/* Form */}
 
-        <form onSubmit={this.onFormSubmit}>
+        <form
+          onSubmit={this.onFormSubmit}
+          className="text-primary font-primary"
+        >
           <label className="label">
             First Name <br />
             <input
@@ -150,10 +152,14 @@ class SignUp extends React.Component {
               : "Password must match confirmation."}
           </label>
 
-          <button type="submit">Submit</button>
-          <button onClick={this.onCancel}>Cancel</button>
+          <button type="submit" className="button">
+            Submit
+          </button>
+          <button onClick={this.onCancel} className="button">
+            Cancel
+          </button>
         </form>
-      </>
+      </div>
     );
   }
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../contexts/globalContext";
 
 class SignIn extends React.Component {
@@ -8,7 +7,8 @@ class SignIn extends React.Component {
     super();
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      showSignInError: false
     };
   }
 
@@ -22,10 +22,17 @@ class SignIn extends React.Component {
         username: this.state.username,
         password: this.state.password
       });
+
       // Upon successful login, goes to previous page.
-      this.props.history.push(this.props.location.state.from.pathname);
+      if (this.props.location.state.from.pathname !== "/signin") {
+        // last page was signin, so go to main page
+        this.props.history.push(this.props.location.state.from.pathname);
+      } else {
+        this.props.history.push("/books");
+      }
     } catch (error) {
-      this.context.handleError.call(this, { error });
+      // go to previous page
+      this.setState({ showSignInError: true });
     }
   };
 
@@ -35,14 +42,34 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="bounds-content">
         {/* Page Title */}
         <div className="page-title">
           <h1>Sign In</h1>
         </div>
 
+        {/* Sign In Error */}
+        {this.state.showSignInError ? (
+          <div>
+            <h2 className="error error__title">Unsuccessful Sign-in</h2>
+            <div className="error error__list ">
+              <ul>
+                {/* Displays errors */}
+                <li className="error error__msg">
+                  Username or password not found.
+                </li>
+              </ul>
+            </div>
+          </div>
+        ) : (
+          ""
+        )}
+
         {/* Form */}
-        <form onSubmit={this.onFormSubmit}>
+        <form
+          onSubmit={this.onFormSubmit}
+          className="text-primary font-primary"
+        >
           <label className="label">
             Username <br />
             <input
@@ -61,10 +88,14 @@ class SignIn extends React.Component {
               className="input"
             />
           </label>
-          <button type="submit">Submit</button>
-          <button onClick={this.onCancel}>Cancel</button>
+          <button type="submit" className="button">
+            Submit
+          </button>
+          <button onClick={this.onCancel} className="button">
+            Cancel
+          </button>
         </form>
-      </>
+      </div>
     );
   }
 }

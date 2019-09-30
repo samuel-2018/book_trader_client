@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../contexts/globalContext";
 import { Request } from "./Request";
 
@@ -50,7 +49,7 @@ class BookTradeRequests extends React.Component {
           <h2>that include this book</h2>
         </div>
 
-        {/* Books List */}
+        {/* Trade Request List */}
         <div>
           {this.state.requests.map(request => {
             return (

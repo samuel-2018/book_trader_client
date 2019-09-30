@@ -36,7 +36,14 @@ class App extends React.Component {
           <Redirect exact path="/" to="/books" />
           <Route exact path="/books" component={Books} />
           <Route exact path="/basket" component={BasketWithPR} />
-          <Route exact path="/books/:id" component={BookDetails} />
+          {/* A unique key is required to create a new component instance if component is already mounted. */}
+          <Route
+            exact
+            path="/books/:id"
+            render={props => (
+              <BookDetails key={props.match.params.id} {...props} />
+            )}
+          />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/newbook" component={NewBookWithPR} />
           <Route exact path="/users/:id" component={Profile} />

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../contexts/globalContext";
 import { Book } from "./Book";
 
@@ -28,37 +27,31 @@ class Books extends React.Component {
     })();
   }
 
+  onClickNew = () => {
+    this.props.history.push("/newbook");
+  };
+
   render() {
     return (
-      <>
+      <div className="bounds-content">
         {/* Page Title */}
-        <div className="page-title">
+        <div className="page-title same-line">
           <h1>Books</h1>
           <h2>available for trade</h2>
         </div>
 
         {/* Books List */}
-        <div>
+        <div className="page-body two-column-wrapper">
           {this.state.books.map(book => {
             return <Book key={`book-${book.bookId}`} bookData={book} />;
           })}
         </div>
 
         {/* Create New Book Button */}
-        <div className="button">
-          <Link
-            to={{
-              pathname: `/newbook`,
-              state: { from: this.props.location }
-            }}
-          >
-            <h3>
-              <i className="fas fa-plus"></i>
-              Create New Book
-            </h3>
-          </Link>
-        </div>
-      </>
+        <button className="button" onClick={this.onClickNew}>
+          <i className="fas fa-plus"></i> Create New Book
+        </button>
+      </div>
     );
   }
 }

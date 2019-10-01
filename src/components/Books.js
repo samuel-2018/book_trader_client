@@ -33,15 +33,15 @@ class Books extends React.Component {
 
   render() {
     return (
-      <div className="bounds-content">
+      <div className="page-bounds">
         {/* Page Title */}
-        <div className="page-title same-line">
+        <div className="page-header  same-line">
           <h1>Books</h1>
           <h2>available for trade</h2>
         </div>
 
         {/* Books List */}
-        <div className="page-body two-column-wrapper">
+        <div className="page-main page-main--two-columns">
           {this.state.books.map(book => {
             return <Book key={`book-${book.bookId}`} bookData={book} />;
           })}

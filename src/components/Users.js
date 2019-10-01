@@ -30,14 +30,14 @@ class Users extends React.Component {
 
   render() {
     return (
-      <div className="bounds-content">
+      <div className="page-bounds">
         {/* Page Title */}
-        <div className="page-title">
+        <div className="page-header">
           <h1>Users</h1>
         </div>
 
         {/* User List */}
-        <div className="page-body two-column-wrapper">
+        <div className="page-main page-main--two-columns">
           {this.state.users.map(user => {
             return <User key={`user-${user.userId}`} userData={user} />;
           })}

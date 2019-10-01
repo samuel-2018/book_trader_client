@@ -1,28 +1,44 @@
 // global reset
-h1,
-h2,
-h3,
-p,
-div,
-nav,
-link,
-i,
-dl,
-dt,
-dd,
+// h1,
+// h2,
+// h3,
+// p,
+// div,
+// nav,
+// link,
+// i,
+// dl,
+// dt,
+// dd,
+// ul,
+// li,
+// body {
+//   // font-size: 16px;
+//   padding: 0;
+//   margin: 0;
+//   text-decoration: none;
+//   list-style: none;
+// }
+
 ul,
-li,
+nav,
+div,
 body {
-  // font-size: 16px;
   padding: 0;
   margin: 0;
-  text-decoration: none;
-  list-style: none;
 }
 
 body {
   background-color: #ecf3ff;
 }
+
+// APP
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 // http://paletton.com/#uid=53I0u0ksIM7hsRFneO-GJJAHdrY
 
 // variables for colors
@@ -38,36 +54,6 @@ $text-warning: red;
 $font-primary: "Noto Sans", sans-serif;
 $font-nav: Arial, Helvetica, sans-serif;
 
-// BUTTONS
-
-.button {
-  width: 100%;
-  // height: 40px;
-  padding: 12px;
-  text-align: center;
-  background: $bg-primary;
-  color: $text-light;
-  cursor: pointer;
-  border-radius: 5px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 18px;
-  // line-height: 18px;
-  margin: 10px 0;
-}
-.button:hover {
-  background: lighten($bg-primary, 20%);
-}
-
-// NAV ITEMS
-.nav {
-  text-decoration: none;
-  font-family: $font-nav;
-  font-weight: bold;
-  text-transform: uppercase;
-  color: $text-light;
-}
-
 .text-primary {
   color: $text-primary;
 }
@@ -76,60 +62,52 @@ $font-nav: Arial, Helvetica, sans-serif;
   font-family: $font-primary;
 }
 
-// HEADER-ALL
-.header {
+// *****************************
+// HEADER (NAV)
+// *****************************
+.nav {
+  text-decoration: none;
+  font-family: $font-nav;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $text-light;
+}
+.header-container {
   background-color: $bg-primary;
   display: flex;
   justify-content: center;
   font-size: 14px;
   width: 100%;
 }
-.bounds {
+.header-bounds {
   padding: 5px;
   display: flex;
   flex-direction: column;
-  //for testing
-  // width: 95%;
+  justify-content: flex-start;
+  flex-flow: wrap;
   max-width: 900px;
-  @media (min-width: 600px) {
+
+  @media (min-width: 660px) {
     width: 95%;
+  }
+  @media (min-width: 630px) {
   }
 }
 
-// HEADER-TOP
-// * {
-//   border: 0.3px dashed orangered;
-// }
-.bounds {
-  display: flex;
-  justify-content: flex-start;
-  flex-flow: wrap;
-}
-.wrapper__nav {
-  display: flex;
-  flex-direction: column;
-  flex: 1 0 0;
-  // flex-flow: nowrap;
-  // width: 100%;
-
-  // justify-content: space-between;
-  // flex-flow: wrap;
-}
-// .wrapper-logo-main-nav {
-//   display: flex;
-//   justify-content: space-between;
-//   flex-flow: wrap;
-// }
-.header--logo {
-  margin: 5px;
+// MAIN NAV
+.header__logo {
+  margin: 5px 5px 0 5px;
   align-self: center;
   padding-top: 4px;
 }
 .book-logo {
   margin-right: 8px;
-  // margin-left: -18px;
 }
-#header--logo__link {
+.logo-text {
+  vertical-align: text-bottom;
+}
+
+#header__logo__link {
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -137,46 +115,72 @@ $font-nav: Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-transform: uppercase;
   color: #ffd41a;
-  // color: $text-light;
   font-size: 32px;
 }
-
-.main-nav {
+.header__main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+}
+.header__main__primary-nav {
   display: flex;
   justify-content: flex-end;
-
   margin-left: auto;
+  // Once screen is wide enough,
+  // keeps primary nav on one line.
+  @media (min-width: 580px) {
+    min-width: 320px;
+  }
 }
-.main-nav__account,
-.main-nav__icons {
+.nav__account,
+.nav__icons {
   display: flex;
   justify-content: center;
   flex-flow: wrap;
-  // margin: 5px;
+  align-items: center;
 }
 
-//HEADER-BOTTOM
-.secondary-nav__pages {
+// SECONDARY NAV
+.nav__pages {
   display: flex;
   justify-content: space-between;
-
-  // margin: 5px;
-  margin-left: 18px;
-  margin-right: 18px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  list-style: none;
+  @media (min-width: 688px) {
+    padding-left: 54px;
+  }
 }
 .nav,
 .pad {
-  // border: 1px solid yellowgreen;
   margin: 5px;
 }
 .pad-s {
   margin: 2px;
 }
+.nav.link:hover {
+  color: #ffe574;
+}
+// *****************************
 // BOOK (and USER)
+// *****************************
+.link-wrapper {
+  box-sizing: border-box;
+  width: 100%;
+  @media (min-width: 1100px) {
+    width: 428px;
+  }
+}
+.link-no-decoration {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
 .book,
 .user {
+  box-sizing: border-box;
   background-color: white;
-  // background-color: $bg-light;
   font-family: $font-primary;
   color: $text-primary;
   font-weight: bold;
@@ -186,21 +190,23 @@ $font-nav: Arial, Helvetica, sans-serif;
   padding: 5px 16px;
   border-radius: 5px;
   margin: 5px;
+
   @media (min-width: 1100px) {
-    // width: 100%;
-    // margin: 5px;
-    width: 428px;
+    // width: 428px;
+    max-width: 100%;
   }
 }
 .book:hover,
 .user:hover {
   background-color: #ffe574;
 }
+
 .book__info,
 .user__info {
   display: flex;
   flex-direction: column;
 }
+// BOOK ONLY
 .book__requests {
   display: flex;
   flex-direction: start;
@@ -209,139 +215,32 @@ $font-nav: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
 }
-.no-decoration {
-  text-decoration: none;
-  margin: 0;
-  padding: 0;
-}
+
 .book__requests__usernames__name {
   font-size: 0.5rem;
 }
-.box-title {
-  font-family: $font-primary;
-  color: $text-light;
-  text-align: center;
-}
+
+// *****************************
+// BOOK DETAILS PAGE
+// *****************************
 .book-details {
+  display: grid;
+  grid-template-columns: min-content auto;
+  grid-column-gap: 10px;
+  margin-bottom: 16px;
   font-family: $font-primary;
   color: $text-primary;
 }
 .book-details__name {
   font-weight: bold;
 }
-
-// BOOK DETAILS PAGE
-.book-details {
-  display: grid;
-  grid-template-columns: min-content auto;
-  grid-column-gap: 10px;
-  margin-bottom: 16px;
-}
 .book-details__value {
   font-weight: bold;
 }
 
-//PAGES
-.page-title {
-  font-weight: bold;
-  font-family: $font-primary;
-  margin-bottom: 16px;
-  color: $text-primary;
-}
-
-.page-title > h1 {
-  font-size: 3rem;
-  text-align: center;
-  margin: 5px;
-}
-.page-title > h2 {
-  font-size: 1.5rem;
-  text-align: center;
-  margin: 5px;
-}
-.page-title.same-line {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-}
-.page-body {
-  width: 100%;
-  margin-bottom: 16px;
-}
-.wrapper__100 {
-  width: 100%;
-}
-.message-box__full {
-  margin-left: 0;
-}
-.message-box__partual {
-  margin-left: 40px;
-}
-
-// REQUEST
-// .requests {
-//   width: 100%;
-// }
-.request {
-  // margin: 16px 0;
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
-.request__body {
-  padding: 10px;
-  border-radius: 5px;
-  // margin-left: 40px;
-}
-.request__requester {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  color: $text-primary;
-  font-weight: bold;
-  margin-bottom: 4px;
-}
-.request__requester__picture {
-  font-size: 36px;
-
-  margin-right: 4px;
-}
-.request__body__offers {
-  margin-bottom: 16px;
-}
-.request__body,
-.basket {
-  background-color: $bg-secondary;
-  min-height: 86.5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.request__body__wrapper,
-.two-column-wrapper {
-  display: flex;
-  flex-direction: column;
-  @media (min-width: 1100px) {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
-.two-column-wrapper {
-  @media (min-width: 1100px) {
-    flex-wrap: wrap;
-  }
-}
-
-.request__body__wrapper > div,
-.two-column-wrapper > div {
-  @media (min-width: 1100px) {
-    // flex: 1 1 1;
-    width: 100%;
-    // background-color: red !important;
-  }
-}
-
-//FORMS
+// *****************************
+// FORMS
+// *****************************
 form {
   display: flex;
   flex-direction: column;
@@ -361,58 +260,6 @@ label {
   margin: 4px 0;
 }
 
-// CONTENT
-.bounds-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 5px;
-  max-width: 500px;
-  //for testing
-
-  @media (min-width: 600px) {
-    width: 95%;
-  }
-  @media (min-width: 1100px) {
-    max-width: 1000px;
-  }
-}
-
-// APP
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-// BASKET
-.basket {
-  padding: 10px;
-}
-.basket__body {
-  margin-bottom: 18px;
-}
-.basket__body__wants,
-.basket__body__offers {
-  margin-bottom: 30px;
-}
-
-// PROFILE
-.profile__picture {
-  font-size: 70px;
-  color: $text-primary;
-}
-.profile__details {
-  font-family: $font-primary;
-  color: $text-primary;
-  font-size: 24px;
-}
-.page-body.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 // ERRORS
 .error {
   color: $text-warning;
@@ -425,3 +272,211 @@ h2.error__title {
 li.error__msg {
   font-size: 16px;
 }
+
+// *****************************
+// PAGE (styles used on multiple pages)
+// *****************************
+.page-bounds {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  max-width: 500px;
+
+  @media (min-width: 600px) {
+    width: 95%;
+  }
+  @media (min-width: 1100px) {
+    max-width: 1000px;
+  }
+}
+.page-header {
+  font-weight: bold;
+  font-family: $font-primary;
+  margin-bottom: 16px;
+  color: $text-primary;
+}
+
+.page-header > h1 {
+  font-size: 48px;
+  text-align: center;
+  margin: 5px;
+}
+.page-header > h2 {
+  font-size: 30px;
+  text-align: center;
+  margin: 5px;
+}
+.page-header.same-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+.page-main {
+  width: 100%;
+  margin-bottom: 16px;
+
+  // used by profile page
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page-text__jumbo {
+  font-size: 70px;
+  color: $text-primary;
+  font-family: $font-primary;
+}
+.page-text__large {
+  font-size: 24px;
+  color: $text-primary;
+  font-family: $font-primary;
+}
+.page-text__normal {
+  font-size: 16px;
+  color: $text-primary;
+  font-family: $font-primary;
+}
+.page-main--two-columns {
+  // single column
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 1100px) {
+    // double column
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+.width-100 {
+  width: 100%;
+}
+.wrapper__100 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// *****************************
+// TCS (TRADE CARD STYLE)
+// *****************************
+.tcs-container {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+.tcs__header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: $text-primary;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.tcs__header__img {
+  font-size: 36px;
+  margin-right: 4px;
+}
+.tcs__header__txt {
+  color: $text-primary;
+  font-family: $font-primary;
+}
+.tcs__main {
+  background-color: $bg-secondary;
+  min-height: 86.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+.tcs__main--right {
+  margin-left: 40px;
+}
+.tcs__main--center {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.tcs__main__content {
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 1100px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.tcs__main__content > div {
+  //TODO Is this still needed?
+  @media (min-width: 1100px) {
+    width: 100%;
+  }
+}
+.tcs__main__content__column {
+}
+.tcs__main__messages {
+  font-family: $font-primary;
+  color: $text-light;
+  text-align: center;
+}
+
+h3.tcs-text,
+.tcs-text {
+  font-family: $font-primary;
+  color: $text-light;
+  text-align: center;
+  font-weight: bold;
+}
+.tcs-border--top {
+  border-top: 3px groove $text-light;
+  margin-top: 4px;
+}
+// BUTTONS
+.tcs__main__buttons,
+.page__main__buttons {
+  @media (min-width: 1100px) {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+.tcs__main__buttons > .button,
+.page__main__buttons > .button {
+  @media (min-width: 1100px) {
+    width: 428px;
+  }
+}
+.tcs__main__buttons-half,
+.page__main__buttons-half {
+  @media (min-width: 1100px) {
+    width: 428px;
+  }
+}
+.button-half {
+  @media (min-width: 1100px) {
+    max-width: fit-content;
+    min-width: 175px;
+  }
+}
+.button {
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  background: $bg-primary;
+  color: $text-light;
+  cursor: pointer;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 10px 0;
+  @media (min-width: 1100px) {
+    width: 428px;
+  }
+}
+.button:hover {
+  background: lighten($bg-primary, 20%);
+}
+
+// * {
+//   border: 1px solid red;
+//   padding: 1px;
+// }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const Book = props => {
   return (
     <Link
-      className="no-decoration"
+      className="link-wrapper link-no-decoration"
       to={{
         pathname: `/books/${props.bookData.bookId}`,
         // TODO test, the book component may need props passed to it.

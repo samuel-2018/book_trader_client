@@ -116,61 +116,71 @@ class Basket extends React.Component {
 
   render() {
     return (
-      <div className="bounds-content">
+      <div className="page-bounds">
         {/* Section Title */}
 
-        <div className="page-title">
+        <div className="page-header">
           <h1>Trading Basket</h1>
         </div>
 
-        <section className="basket page-body">
-          <div className="basket__body">
-            <div className="basket__body__wants">
-              <h3 className="box-title">Books I Want</h3>
-              {/* Books List */}
-              <div>
-                {this.state.takeBooks.map(book => {
-                  return (
-                    <Book key={`book-${book.bookId}-basket`} bookData={book} />
-                  );
-                })}
+        <section className="page-main tcs-container">
+          <div className="tcs__main tcs__main--center">
+            <div className="tcs__main__content">
+              <div className="tcs__main__content__column">
+                <h3 className="tcs-text">Books I Want</h3>
+                {/* Books List */}
+                <div>
+                  {this.state.takeBooks.map(book => {
+                    return (
+                      <Book
+                        key={`book-${book.bookId}-basket`}
+                        bookData={book}
+                      />
+                    );
+                  })}
+                </div>
               </div>
-            </div>
 
-            <div className="basket__body__offers">
-              <h3 className="box-title">Books I'm Offering</h3>
-              {/* Books List */}
-              <div>
-                {this.state.giveBooks.map(book => {
-                  return (
-                    <Book key={`book-${book.bookId}-basket`} bookData={book} />
-                  );
-                })}
+              <div className="tcs__main__content__column">
+                <h3 className="tcs-text">Books I'm Offering</h3>
+                {/* Books List */}
+                <div>
+                  {this.state.giveBooks.map(book => {
+                    return (
+                      <Book
+                        key={`book-${book.bookId}-basket`}
+                        bookData={book}
+                      />
+                    );
+                  })}
+                </div>
               </div>
             </div>
 
             {!this.state.isOneTrader ? (
-              <div className="box-title">
+              <div className="tcs__main__messages">
                 You can only trade with one person per trade request.
               </div>
             ) : (
               ""
             )}
             {!this.state.isRealTrade ? (
-              <div className="box-title">That's not a fair trade!</div>
+              <div className="tcs__main__messages">
+                That's not a fair trade!
+              </div>
             ) : (
               ""
             )}
-          </div>
 
-          <div className="buttons">
-            <button className="button" onClick={this.onSubmit}>
-              Submit
-            </button>
+            <div className="tcs__main__buttons tcs-border--top">
+              <button className="button" onClick={this.onSubmit}>
+                Submit
+              </button>
 
-            <button className="button" onClick={this.onGoHome}>
-              Home
-            </button>
+              <button className="button" onClick={this.onGoHome}>
+                Home
+              </button>
+            </div>
           </div>
         </section>
       </div>

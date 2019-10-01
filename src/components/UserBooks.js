@@ -59,25 +59,23 @@ class UserBooks extends React.Component {
 
   render() {
     return (
-      <div className="bounds-content">
+      <div className="page-bounds">
         {this.state.username !== "" ? (
           <div className="wrapper__100">
             {/* Page Title */}
-            <div className="page-title">
+            <div className="page-header">
               <h1>{this.state.username}'s Books</h1>
             </div>
 
             {/* Books List */}
             {this.state.books.length ? (
-              <div className="page-body">
+              <div className="page-main  page-main--two-columns">
                 {this.state.books.map(book => {
                   return <Book key={`book-${book.bookId}`} bookData={book} />;
                 })}
               </div>
             ) : (
-              <div className="box-title request__body request message-box__full">
-                Nothing Found
-              </div>
+              <div className="tcs__header__txt tcs__main">Nothing Found</div>
             )}
 
             {/* Create New Book Button */}
@@ -86,7 +84,7 @@ class UserBooks extends React.Component {
             </button>
           </div>
         ) : (
-          <div className="box-title request__body request">Loading...</div>
+          <div className="tcs__header__txt tcs__main">Loading...</div>
         )}
       </div>
     );

@@ -61,19 +61,17 @@ export const Request = props => {
   };
 
   return (
-    <section className="request" key={`request-${requestId}`}>
-      <div className="request__requester">
-        <i className="request__requester__picture fas fa-user-circle"></i>
+    <section className="tcs-container" key={`request-${requestId}`}>
+      <div className="tcs__header">
+        <i className="tcs__header__img fas fa-user-circle"></i>
 
-        <p className="request__requester__username text-primary font-primary">
-          {requester.username}
-        </p>
+        <p className="tcs__header__txt">{requester.username}</p>
       </div>
 
-      <div className="request__body message-box__partual">
-        <div className="request__body__wrapper">
-          <div className="request__body__wants">
-            <h3 className="box-title">Wants</h3>
+      <div className="tcs__main tcs__main--right">
+        <div className="tcs__main__content">
+          <div className="tcs__main__content__column">
+            <h3 className="tcs-text">Wants</h3>
             {/* Books List */}
             <div>
               {takeBooksRequest.map(book => {
@@ -88,8 +86,8 @@ export const Request = props => {
             </div>
           </div>
 
-          <div className="request__body__offers">
-            <h3 className="box-title">Offers</h3>
+          <div className="tcs__main__content__column">
+            <h3 className="tcs-text">Offers</h3>
             {/* Books List */}
             <div>
               {giveBooksRequest.map(book => {
@@ -104,7 +102,7 @@ export const Request = props => {
             </div>
           </div>
         </div>
-        <div className="buttons">
+        <div className="tcs__main__buttons">
           {/* To requester: Show "Cancel Request" Button */}
           {currentUserId === requesterId ? (
             <button className="button button_full" onClick={onDeleteRequest}>

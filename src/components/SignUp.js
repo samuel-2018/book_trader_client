@@ -52,9 +52,9 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div className="bounds-content">
+      <div className="page-bounds">
         {/* Page Title */}
-        <div className="page-title text-primary font-primary">
+        <div className="page-header">
           <h1>Sign Up</h1>
         </div>
 
@@ -63,10 +63,7 @@ class SignUp extends React.Component {
 
         {/* Form */}
 
-        <form
-          onSubmit={this.onFormSubmit}
-          className="text-primary font-primary"
-        >
+        <form onSubmit={this.onFormSubmit} className="page-text__normal">
           <label className="label">
             First Name <br />
             <input
@@ -151,13 +148,14 @@ class SignUp extends React.Component {
               ? ""
               : "Password must match confirmation."}
           </label>
-
-          <button type="submit" className="button">
-            Submit
-          </button>
-          <button onClick={this.onCancel} className="button">
-            Cancel
-          </button>
+          <div className="page__main__buttons">
+            <button type="submit" className="button">
+              Submit
+            </button>
+            <button onClick={this.onCancel} className="button">
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     );

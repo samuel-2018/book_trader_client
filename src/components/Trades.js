@@ -25,6 +25,8 @@ class Trades extends React.Component {
         });
       })
       .catch(error => {
+        // TODO If nothing returned, display a no results msg.
+
         this.context.handleError.call(this, { error });
       });
   };
@@ -35,23 +37,25 @@ class Trades extends React.Component {
         return <Trade key={`trade-${trade.tradeId}`} tradeData={trade} />;
       })
     ) : (
-      <div className="box-title request__body request message-box__partual">
-        Nothing Found
+      <div className="page-bounds">
+        <div className="page-header">
+          <h1>Loading...</h1>
+        </div>
       </div>
     );
   }
 
   render() {
     return (
-      <div className="bounds-content">
+      <div className="page-bounds">
         {/* Section Title */}
-        <div className="page-title">
+        <div className="page-header">
           <h1>Trades</h1>
         </div>
 
-        <div className="page-body">
+        <div className="page-main">
           {/* Trade List */}
-          <div className="page-body">{this.getTrades(this.state.trades)}</div>
+          <div className="page-main">{this.getTrades(this.state.trades)}</div>
         </div>
       </div>
     );

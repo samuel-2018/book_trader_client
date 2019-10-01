@@ -63,15 +63,15 @@ class BookDetails extends React.Component {
   render() {
     const { location } = this.props;
     return (
-      <div className="bounds-content">
+      <div className="page-bounds">
         {/* Page Title */}
-        <div className="page-title">
+        <div className="page-header">
           <h1>Book Details</h1>
         </div>
         {/* Book Details */}
 
         {this.state.book ? (
-          <div className="page-body">
+          <div className="page-main">
             <dl className="book-details ">
               <dt className="book-details__name ">Title:</dt>
               <dd className="book-details__value ">{this.state.book.title}</dd>
@@ -110,23 +110,32 @@ class BookDetails extends React.Component {
             </dl>
 
             {this.context.user ? (
-              <div className="buttons">
+              <div className="page__main__buttons page__main__buttons-half">
                 {/* To non-owner: Show "Add To Basket" Button */}
                 {!this.context
                   .getBasket()
                   .includes(this.props.match.params.id) ? (
-                  <button className="button" onClick={this.onAddToBasket}>
+                  <button
+                    className="button button-half "
+                    onClick={this.onAddToBasket}
+                  >
                     Add To Basket
                   </button>
                 ) : (
-                  <button className="button" onClick={this.onRemoveFromBasket}>
+                  <button
+                    className="button button-half"
+                    onClick={this.onRemoveFromBasket}
+                  >
                     Remove from Basket
                   </button>
                 )}
                 {/* To owner: Show "Add To Basket"" and "Delete" Buttons */}
                 {this.context.user.userId === this.state.book.ownerId ? (
                   <>
-                    <button className="button" onClick={this.onDelete}>
+                    <button
+                      className="button button-half"
+                      onClick={this.onDelete}
+                    >
                       Delete
                     </button>{" "}
                   </>

@@ -14,19 +14,17 @@ export const Trade = props => {
 
   return (
     // key={`trade-${tradeId}`}
-    <section className="request">
-      <div className="request__requester">
-        <i className="request__requester__picture fas fa-exchange-alt"></i>
+    <section className="tcs-container">
+      <div className="tcs__header">
+        <i className="tcs__header__img  fas fa-exchange-alt"></i>
 
-        <p className="request__requester__username text-primary font-primary">
-          {createdAt}
-        </p>
+        <p className="tcs__header__txt">{createdAt}</p>
       </div>
 
-      <div className="request__body message-box__partual">
-        <div className="request__body__wrapper">
-          <div className="request__body__wants">
-            <h3 className="box-title">{requester.username} Received</h3>
+      <div className="tcs__main tcs__main--right">
+        <div className="tcs__main__content">
+          <div className="tcs__main__content__column">
+            <h3 className="tcs-text">{requester.username} Received</h3>
             {/* Books List */}
             <div>
               {takeBooksTrade.map(book => {
@@ -41,8 +39,8 @@ export const Trade = props => {
             </div>
           </div>
 
-          <div className="request__body__offers">
-            <h3 className="box-title">{requestee.username} Received</h3>
+          <div className="tcs__main__content__column">
+            <h3 className="tcs-text">{requestee.username} Received</h3>
             {/* Books List */}
             <div>
               {giveBooksTrade.map(book => {

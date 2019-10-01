@@ -54,31 +54,31 @@ class Requests extends React.Component {
         );
       })
     ) : (
-      <div className="box-title request__body request message-box__partual">
-        Nothing Found
+      <div className="tcs-container">
+        <div className="tcs-text tcs__main  tcs__main--right">
+          Nothing found.
+        </div>
       </div>
     );
   }
 
   render() {
     return (
-      <div className="bounds-content">
+      <div className="page-bounds">
         {/* Section Title */}
-        <div className="page-title">
+        <div className="page-header">
           <h1>Requests</h1>
         </div>
         {this.context.user ? (
           // User signed in
 
-          <div className="page-body">
+          <div className="page-main">
             {/* Section Sub Title */}
-
-            <div className="page-title">
+            <div className="page-header">
               <h2>Requests for your books</h2>
             </div>
-
             {/* Request List */}
-            <div>
+            <div className="width-100">
               {this.getRequests(
                 this.state.requests.filter(request => {
                   return request.requesteeId === this.context.user.userId;
@@ -86,11 +86,11 @@ class Requests extends React.Component {
               )}
             </div>
             {/* Section  Sub Title */}
-            <div className="page-title">
+            <div className="page-header">
               <h2>Your requests for books</h2>
             </div>
             {/* Request List */}
-            <div>
+            <div className="width-100">
               {this.getRequests(
                 this.state.requests.filter(request => {
                   return request.requesterId === this.context.user.userId;
@@ -98,25 +98,26 @@ class Requests extends React.Component {
               )}
             </div>
             {/* Section Sub Title */}
-            <div className="page-title">
+            <div className="page-header">
               <h2>All other requests</h2>
-              {/* Request List */}
-              <div>
-                {this.getRequests(
-                  this.state.requests.filter(request => {
-                    return (
-                      request.requesteeId !== this.context.user.userId &&
-                      request.requesterId !== this.context.user.userId
-                    );
-                  })
-                )}
-              </div>
+            </div>
+            {/* Request List */}
+
+            <div className="width-100">
+              {this.getRequests(
+                this.state.requests.filter(request => {
+                  return (
+                    request.requesteeId !== this.context.user.userId &&
+                    request.requesterId !== this.context.user.userId
+                  );
+                })
+              )}
             </div>
           </div>
         ) : (
           // User not signed in
           // Request List
-          <div className="page-body">
+          <div className="page-main">
             {this.getRequests(this.state.requests)}
           </div>
         )}

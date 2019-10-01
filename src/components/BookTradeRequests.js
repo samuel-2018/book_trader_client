@@ -44,7 +44,7 @@ class BookTradeRequests extends React.Component {
     return (
       <>
         {/* Section Title */}
-        <div className="page-title">
+        <div className="page-header">
           <h1>Trade Requests</h1>
           <h2>that include this book</h2>
         </div>

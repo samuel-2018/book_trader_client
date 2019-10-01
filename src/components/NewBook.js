@@ -56,7 +56,7 @@ class NewBook extends React.Component {
     return (
       <div className="bounds-content">
         {/* Page Title */}
-        <div className="page-title">
+        <div className="page-header">
           <h1>New Book</h1>
         </div>
 
@@ -65,10 +65,7 @@ class NewBook extends React.Component {
 
         {/* Form */}
 
-        <form
-          onSubmit={this.onFormSubmit}
-          className="text-primary font-primary"
-        >
+        <form onSubmit={this.onFormSubmit} className="page-text__normal">
           <label className="label">
             Title <br />
             <input
@@ -126,12 +123,14 @@ class NewBook extends React.Component {
             />
           </label>
 
-          <button type="submit" className="button">
-            Submit
-          </button>
-          <button onClick={this.onCancel} className="button">
-            Cancel
-          </button>
+          <div className="page__main__buttons">
+            <button type="submit" className="button">
+              Submit
+            </button>
+            <button onClick={this.onCancel} className="button">
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     );

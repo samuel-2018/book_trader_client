@@ -1,6 +1,7 @@
 import React from "react";
 import { Context } from "../contexts/globalContext";
 import DocumentTitle from "react-document-title";
+import { Link } from "react-router-dom";
 
 class SignIn extends React.Component {
   static contextType = Context;
@@ -32,7 +33,7 @@ class SignIn extends React.Component {
         this.props.history.push("/books");
       }
     } catch (error) {
-      // go to previous page
+      // show sign in error
       this.setState({ showSignInError: true });
     }
   };
@@ -70,7 +71,10 @@ class SignIn extends React.Component {
           )}
 
           {/* Form */}
-          <form onSubmit={this.onFormSubmit} className="page-text__normal ">
+          <form
+            onSubmit={this.onFormSubmit}
+            className="page-text__normal page-main--form"
+          >
             <label className="label">
               Username <br />
               <input
@@ -89,11 +93,24 @@ class SignIn extends React.Component {
                 className="input"
               />
             </label>
-            <div className="page__main__buttons">
-              <button type="submit" className="button">
+            <div>
+              Don't have an account?{"  "}
+              <Link
+                to={{
+                  pathname: `/signup`,
+                  state: { from: this.location }
+                }}
+                className=""
+              >
+                Sign up here!
+              </Link>
+            </div>
+
+            <div className="page__main__buttons-half page-main-border--top">
+              <button type="submit" className="button button-half">
                 Submit
               </button>
-              <button onClick={this.onCancel} className="button">
+              <button onClick={this.onCancel} className="button button-half">
                 Cancel
               </button>
             </div>

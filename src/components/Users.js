@@ -2,6 +2,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import { Context } from "../contexts/globalContext";
 import { User } from "./User";
+import DocumentTitle from "react-document-title";
 
 class Users extends React.Component {
   static contextType = Context;
@@ -30,19 +31,21 @@ class Users extends React.Component {
 
   render() {
     return (
-      <div className="page-bounds">
-        {/* Page Title */}
-        <div className="page-header">
-          <h1>Users</h1>
-        </div>
+      <DocumentTitle title="Users - Book Trader">
+        <div className="page-bounds" role="heading">
+          {/* Page Title */}
+          <div className="page-header">
+            <h1 role="heading">Users</h1>
+          </div>
 
-        {/* User List */}
-        <div className="page-main page-main--two-columns">
-          {this.state.users.map(user => {
-            return <User key={`user-${user.userId}`} userData={user} />;
-          })}
+          {/* User List */}
+          <div className="page-main page-main--two-columns">
+            {this.state.users.map(user => {
+              return <User key={`user-${user.userId}`} userData={user} />;
+            })}
+          </div>
         </div>
-      </div>
+      </DocumentTitle>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { Context } from "../contexts/globalContext";
+import DocumentTitle from "react-document-title";
 
 class SignIn extends React.Component {
   static contextType = Context;
@@ -42,59 +43,63 @@ class SignIn extends React.Component {
 
   render() {
     return (
-      <div className="page-bounds">
-        {/* Page Title */}
-        <div className="page-header">
-          <h1>Sign In</h1>
-        </div>
+      <DocumentTitle title="Sign In - Book Trader">
+        <div className="page-bounds" role="main">
+          {/* Page Title */}
+          <div className="page-header">
+            <h1 role="heading">Sign In</h1>
+          </div>
 
-        {/* Sign In Error */}
-        {this.state.showSignInError ? (
-          <div>
-            <h2 className="error error__title">Unsuccessful Sign-in</h2>
-            <div className="error error__list ">
-              <ul>
-                {/* Displays errors */}
-                <li className="error error__msg">
-                  Username or password not found.
-                </li>
-              </ul>
+          {/* Sign In Error */}
+          {this.state.showSignInError ? (
+            <div role="alert">
+              <h2 className="error error__title" role="heading">
+                Unsuccessful Sign-in
+              </h2>
+              <div className=" ">
+                <ul className="no-bull">
+                  {/* Displays errors */}
+                  <li className="error error__msg">
+                    Username or password not found.
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-        ) : (
-          ""
-        )}
+          ) : (
+            ""
+          )}
 
-        {/* Form */}
-        <form onSubmit={this.onFormSubmit} className="page-text__normal ">
-          <label className="label">
-            Username <br />
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={e => this.setState({ username: e.target.value })}
-              className="input"
-            />
-          </label>
-          <label className="label">
-            Password <br />
-            <input
-              type="text"
-              value={this.state.password}
-              onChange={e => this.setState({ password: e.target.value })}
-              className="input"
-            />
-          </label>
-          <div className="page__main__buttons">
-            <button type="submit" className="button">
-              Submit
-            </button>
-            <button onClick={this.onCancel} className="button">
-              Cancel
-            </button>
-          </div>
-        </form>
-      </div>
+          {/* Form */}
+          <form onSubmit={this.onFormSubmit} className="page-text__normal ">
+            <label className="label">
+              Username <br />
+              <input
+                type="text"
+                value={this.state.username}
+                onChange={e => this.setState({ username: e.target.value })}
+                className="input"
+              />
+            </label>
+            <label className="label">
+              Password <br />
+              <input
+                type="text"
+                value={this.state.password}
+                onChange={e => this.setState({ password: e.target.value })}
+                className="input"
+              />
+            </label>
+            <div className="page__main__buttons">
+              <button type="submit" className="button">
+                Submit
+              </button>
+              <button onClick={this.onCancel} className="button">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </DocumentTitle>
     );
   }
 }

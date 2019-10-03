@@ -2,6 +2,7 @@ import React from "react";
 import { Context } from "../contexts/globalContext";
 import { Book } from "./Book";
 import { PrivateRoute } from "./PrivateRoute";
+import DocumentTitle from "react-document-title";
 
 class Basket extends React.Component {
   static contextType = Context;
@@ -116,74 +117,79 @@ class Basket extends React.Component {
 
   render() {
     return (
-      <div className="page-bounds">
-        {/* Section Title */}
+      <DocumentTitle title="Basket - Book Trader">
+        <div className="page-bounds" role="main">
+          {/* Section Title */}
 
-        <div className="page-header">
-          <h1>Trading Basket</h1>
-        </div>
-
-        <section className="page-main tcs-container">
-          <div className="tcs__main tcs__main--center">
-            <div className="tcs__main__content">
-              <div className="tcs__main__content__column">
-                <h3 className="tcs-text">Books I Want</h3>
-                {/* Books List */}
-                <div>
-                  {this.state.takeBooks.map(book => {
-                    return (
-                      <Book
-                        key={`book-${book.bookId}-basket`}
-                        bookData={book}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="tcs__main__content__column">
-                <h3 className="tcs-text">Books I'm Offering</h3>
-                {/* Books List */}
-                <div>
-                  {this.state.giveBooks.map(book => {
-                    return (
-                      <Book
-                        key={`book-${book.bookId}-basket`}
-                        bookData={book}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-
-            {!this.state.isOneTrader ? (
-              <div className="tcs__main__messages">
-                You can only trade with one person per trade request.
-              </div>
-            ) : (
-              ""
-            )}
-            {!this.state.isRealTrade ? (
-              <div className="tcs__main__messages">
-                That's not a fair trade!
-              </div>
-            ) : (
-              ""
-            )}
-
-            <div className="tcs__main__buttons tcs-border--top">
-              <button className="button" onClick={this.onSubmit}>
-                Submit
-              </button>
-
-              <button className="button" onClick={this.onGoHome}>
-                Home
-              </button>
-            </div>
+          <div className="page-header">
+            <h1 role="heading">Trading Basket</h1>
           </div>
-        </section>
-      </div>
+
+          <section className="tcs-container">
+            <div className="tcs__main tcs__main--center">
+              <div className="tcs__main__content">
+                <div className="tcs__main__content__column">
+                  <h3 className="tcs-text" role="heading">
+                    Books I Want
+                  </h3>
+                  {/* Books List */}
+                  <div>
+                    {this.state.takeBooks.map(book => {
+                      return (
+                        <Book
+                          key={`book-${book.bookId}-basket`}
+                          bookData={book}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="tcs__main__content__column">
+                  <h3 className="tcs-text" role="heading">
+                    Books I'm Offering
+                  </h3>
+                  {/* Books List */}
+                  <div>
+                    {this.state.giveBooks.map(book => {
+                      return (
+                        <Book
+                          key={`book-${book.bookId}-basket`}
+                          bookData={book}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              {!this.state.isOneTrader ? (
+                <div className="tcs__main__messages" role="alert">
+                  You can only trade with one person per trade request.
+                </div>
+              ) : (
+                ""
+              )}
+              {!this.state.isRealTrade ? (
+                <div className="tcs__main__messages" role="alert">
+                  That's not a fair trade!
+                </div>
+              ) : (
+                ""
+              )}
+
+              <div className="tcs__main__buttons tcs-border--top">
+                <button className="button button-half" onClick={this.onSubmit}>
+                  Submit
+                </button>
+                <button className="button button-half" onClick={this.onGoHome}>
+                  Home
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </DocumentTitle>
     );
   }
 }

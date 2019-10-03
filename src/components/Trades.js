@@ -2,6 +2,7 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import { Trade } from "./Trade";
 import { Context } from "../contexts/globalContext";
+import DocumentTitle from "react-document-title";
 
 class Trades extends React.Component {
   static contextType = Context;
@@ -47,17 +48,19 @@ class Trades extends React.Component {
 
   render() {
     return (
-      <div className="page-bounds">
-        {/* Section Title */}
-        <div className="page-header">
-          <h1>Trades</h1>
-        </div>
+      <DocumentTitle title="Trades - Book Trader">
+        <div className="page-bounds" role="main">
+          {/* Section Title */}
+          <div className="page-header">
+            <h1 role="heading">Trades</h1>
+          </div>
 
-        <div className="page-main">
-          {/* Trade List */}
-          <div className="page-main">{this.getTrades(this.state.trades)}</div>
+          <div className="page-main">
+            {/* Trade List */}
+            <div className="page-main">{this.getTrades(this.state.trades)}</div>
+          </div>
         </div>
-      </div>
+      </DocumentTitle>
     );
   }
 }

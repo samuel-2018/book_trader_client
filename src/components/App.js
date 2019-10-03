@@ -2,6 +2,9 @@ import { Context } from "../contexts/globalContext";
 import React from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 
+// Document title is set by components:
+// https://github.com/gaearon/react-document-title
+
 //Components
 import { Header } from "./Header";
 import { SignOut } from "./SignOut";

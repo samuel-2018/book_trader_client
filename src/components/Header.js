@@ -14,7 +14,7 @@ const Header = props => {
 
   return (
     <div className="header-container">
-      <div className="header-bounds">
+      <div className="header-bounds" role="banner">
         {/* <div className="wrapper-logo-main-nav"> */}
         <h1 className="header__logo">
           <Link to={{ pathname: `/books` }} id="header__logo__link">
@@ -53,7 +53,11 @@ const Header = props => {
                     }}
                     className="nav link"
                   >
-                    <i className="nav link fas fa-user"></i>
+                    <i
+                      className="nav link fas fa-user"
+                      aria-label="user profile"
+                      alt="user profile"
+                    ></i>
                   </Link>
                   {/* Basket */}
                   <Link
@@ -63,7 +67,11 @@ const Header = props => {
                     }}
                     className="nav link"
                   >
-                    <i className="nav link nav__icons__basket fas fa-shopping-basket"></i>
+                    <i
+                      className="nav link nav__icons__basket fas fa-shopping-basket"
+                      aria-label="trade basket"
+                      alt="trade basket"
+                    ></i>
                   </Link>
                 </div>
               </>

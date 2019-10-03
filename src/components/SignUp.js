@@ -1,5 +1,6 @@
 import React from "react";
 import { Context } from "../contexts/globalContext";
+import DocumentTitle from "react-document-title";
 
 class SignUp extends React.Component {
   static contextType = Context;
@@ -52,112 +53,116 @@ class SignUp extends React.Component {
 
   render() {
     return (
-      <div className="page-bounds">
-        {/* Page Title */}
-        <div className="page-header">
-          <h1>Sign Up</h1>
-        </div>
-
-        {/* Validation Errors */}
-        {this.context.validationMessages(this.state.validationErrors)}
-
-        {/* Form */}
-
-        <form onSubmit={this.onFormSubmit} className="page-text__normal">
-          <label className="label">
-            First Name <br />
-            <input
-              type="text"
-              value={this.state.firstName}
-              onChange={e => this.setState({ firstName: e.target.value })}
-              className="input"
-            />
-          </label>
-          <label className="label">
-            Last Name <br />
-            <input
-              type="text"
-              value={this.state.lastName}
-              onChange={e => this.setState({ lastName: e.target.value })}
-              className="input"
-            />
-          </label>
-          <label className="label">
-            Username <br />
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={e => this.setState({ username: e.target.value })}
-              className="input"
-            />
-          </label>
-          <label className="label">
-            Email <br />
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={e => this.setState({ email: e.target.value })}
-              className="input"
-            />
-          </label>
-          <label className="label">
-            Country <br />
-            <input
-              type="text"
-              value={this.state.country}
-              onChange={e => this.setState({ country: e.target.value })}
-              className="input"
-            />
-          </label>
-          <label className="label">
-            State <br />
-            <input
-              type="text"
-              value={this.state.state}
-              onChange={e => this.setState({ state: e.target.value })}
-              className="input"
-            />
-          </label>
-          <label className="label">
-            City <br />
-            <input
-              type="text"
-              value={this.state.city}
-              onChange={e => this.setState({ city: e.target.value })}
-              className="input"
-            />
-          </label>
-          <label className="label">
-            Password <br />
-            <input
-              type="text"
-              value={this.state.password}
-              onChange={e => this.setState({ password: e.target.value })}
-              className="input"
-            />
-          </label>
-          <label className="label">
-            Confirm Password <br />
-            <input
-              type="text"
-              value={this.state.confirmPassword}
-              onChange={e => this.setState({ confirmPassword: e.target.value })}
-              className="input"
-            />
-            {this.state.confirmPasswordError === false
-              ? ""
-              : "Password must match confirmation."}
-          </label>
-          <div className="page__main__buttons">
-            <button type="submit" className="button">
-              Submit
-            </button>
-            <button onClick={this.onCancel} className="button">
-              Cancel
-            </button>
+      <DocumentTitle title="Sign Up - Book Trader">
+        <div className="page-bounds" role="main">
+          {/* Page Title */}
+          <div className="page-header">
+            <h1 role="heading">Sign Up</h1>
           </div>
-        </form>
-      </div>
+
+          {/* Validation Errors */}
+          {this.context.validationMessages(this.state.validationErrors)}
+
+          {/* Form */}
+
+          <form onSubmit={this.onFormSubmit} className="page-text__normal">
+            <label className="label">
+              First Name <br />
+              <input
+                type="text"
+                value={this.state.firstName}
+                onChange={e => this.setState({ firstName: e.target.value })}
+                className="input"
+              />
+            </label>
+            <label className="label">
+              Last Name <br />
+              <input
+                type="text"
+                value={this.state.lastName}
+                onChange={e => this.setState({ lastName: e.target.value })}
+                className="input"
+              />
+            </label>
+            <label className="label">
+              Username <br />
+              <input
+                type="text"
+                value={this.state.username}
+                onChange={e => this.setState({ username: e.target.value })}
+                className="input"
+              />
+            </label>
+            <label className="label">
+              Email <br />
+              <input
+                type="text"
+                value={this.state.email}
+                onChange={e => this.setState({ email: e.target.value })}
+                className="input"
+              />
+            </label>
+            <label className="label">
+              Country <br />
+              <input
+                type="text"
+                value={this.state.country}
+                onChange={e => this.setState({ country: e.target.value })}
+                className="input"
+              />
+            </label>
+            <label className="label">
+              State <br />
+              <input
+                type="text"
+                value={this.state.state}
+                onChange={e => this.setState({ state: e.target.value })}
+                className="input"
+              />
+            </label>
+            <label className="label">
+              City <br />
+              <input
+                type="text"
+                value={this.state.city}
+                onChange={e => this.setState({ city: e.target.value })}
+                className="input"
+              />
+            </label>
+            <label className="label">
+              Password <br />
+              <input
+                type="text"
+                value={this.state.password}
+                onChange={e => this.setState({ password: e.target.value })}
+                className="input"
+              />
+            </label>
+            <label className="label">
+              Confirm Password <br />
+              <input
+                type="text"
+                value={this.state.confirmPassword}
+                onChange={e =>
+                  this.setState({ confirmPassword: e.target.value })
+                }
+                className="input"
+              />
+              {this.state.confirmPasswordError === false
+                ? ""
+                : "Password must match confirmation."}
+            </label>
+            <div className="page__main__buttons">
+              <button type="submit" className="button">
+                Submit
+              </button>
+              <button onClick={this.onCancel} className="button">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </DocumentTitle>
     );
   }
 }

@@ -19,7 +19,10 @@ export const Book = props => {
         </div>
 
         <div className="book__requests">
-          <i className="book__requests__icon fas fa-comments pad-s" />
+          <i
+            className="book__requests__icon fas fa-comments pad-s"
+            aria-label="requests for this book"
+          />
 
           <div className="book__requests__info">
             <p className="book__requests__count pad-s">

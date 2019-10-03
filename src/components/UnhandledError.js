@@ -1,10 +1,17 @@
 import React from "react";
+import DocumentTitle from "react-document-title";
 
 export const UnhandledError = () => {
   return (
-    <div className="bounds">
-      <h1>Error</h1>
-      <p>Sorry! We just encountered an unexpected error.</p>
-    </div>
+    <DocumentTitle title="Error - Book Trader">
+      <div className="page-bounds" role="main">
+        <div className="page-header">
+          <h1 role="heading">Error</h1>
+          <h2 role="heading">
+            Sorry! We just encountered an unexpected error.
+          </h2>
+        </div>
+      </div>
+    </DocumentTitle>
   );
 };

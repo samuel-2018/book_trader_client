@@ -9,13 +9,17 @@ export const validationMessages = validationErrors => {
         ""
       ) : (
         // <p>test</p>
-        <div>
-          <h2 className="validation--errors--label">Validation errors</h2>
-          <div className="validation-errors">
-            <ul>
+        <div role="alert">
+          <h2 className="error error__title">Validation errors</h2>
+          <div className="">
+            <ul className="no-bull">
               {/* Displays validation errors */}
               {validationErrors.map((error, index) => {
-                return <li key={`validation-${index}`}>{error.message}</li>;
+                return (
+                  <li className="error error__msg " key={`validation-${index}`}>
+                    {error.message}
+                  </li>
+                );
               })}
             </ul>
           </div>

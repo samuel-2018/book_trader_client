@@ -71,7 +71,9 @@ export const Request = props => {
       <div className="tcs__main tcs__main--right">
         <div className="tcs__main__content">
           <div className="tcs__main__content__column">
-            <h3 className="tcs-text">Wants</h3>
+            <h3 className="tcs-text" role="heading">
+              Wants
+            </h3>
             {/* Books List */}
             <div>
               {takeBooksRequest.map(book => {
@@ -87,7 +89,9 @@ export const Request = props => {
           </div>
 
           <div className="tcs__main__content__column">
-            <h3 className="tcs-text">Offers</h3>
+            <h3 className="tcs-text" role="heading">
+              Offers
+            </h3>
             {/* Books List */}
             <div>
               {giveBooksRequest.map(book => {
@@ -105,7 +109,7 @@ export const Request = props => {
         <div className="tcs__main__buttons">
           {/* To requester: Show "Cancel Request" Button */}
           {currentUserId === requesterId ? (
-            <button className="button button_full" onClick={onDeleteRequest}>
+            <button className="button button-full" onClick={onDeleteRequest}>
               Cancel Request
             </button>
           ) : (
@@ -114,10 +118,10 @@ export const Request = props => {
           {/* To requestee: Show "Accept" and "Reject" Buttons */}
           {currentUserId === requesteeId ? (
             <>
-              <button className="button button_half" onClick={onAccept}>
+              <button className="button button-half" onClick={onAccept}>
                 Accept
               </button>
-              <button className="button button_half" onClick={onDeleteRequest}>
+              <button className="button button-half" onClick={onDeleteRequest}>
                 Reject
               </button>{" "}
             </>

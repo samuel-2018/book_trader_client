@@ -50,7 +50,7 @@ class BookTradeRequests extends React.Component {
         </div>
 
         {/* Trade Request List */}
-        <div>
+        <div className="width-100">
           {this.state.requests.map(request => {
             return (
               <Request

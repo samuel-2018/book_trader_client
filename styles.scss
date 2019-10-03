@@ -1,24 +1,6 @@
-// global reset
-// h1,
-// h2,
-// h3,
-// p,
-// div,
-// nav,
-// link,
-// i,
-// dl,
-// dt,
-// dd,
-// ul,
-// li,
-// body {
-//   // font-size: 16px;
-//   padding: 0;
-//   margin: 0;
-//   text-decoration: none;
-//   list-style: none;
-// }
+* {
+  box-sizing: border-box;
+}
 
 ul,
 nav,
@@ -68,11 +50,31 @@ $font-nav: Arial, Helvetica, sans-serif;
 // HEADER (NAV)
 // *****************************
 .nav {
+  font-size: 21px;
   text-decoration: none;
   font-family: $font-nav;
   font-weight: bold;
   text-transform: uppercase;
   color: $text-light;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: greenyellow;
+}
+
+.nav,
+.pad {
+  margin: 5px;
+}
+.pad-s {
+  margin: 2px;
+}
+.nav.link:hover {
+  color: #ffe574;
+}
+.nav-center {
 }
 .header-container {
   background-color: $bg-primary;
@@ -82,17 +84,14 @@ $font-nav: Arial, Helvetica, sans-serif;
   width: 100%;
 }
 .header-bounds {
-  padding: 5px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   flex-flow: wrap;
-  max-width: 900px;
-
-  @media (min-width: 660px) {
-    width: 95%;
-  }
-  @media (min-width: 630px) {
+  width: 100%;
+  @media (min-width: 900px) {
+    max-width: 900px;
   }
 }
 
@@ -120,20 +119,26 @@ $font-nav: Arial, Helvetica, sans-serif;
   font-size: 32px;
 }
 .header__main {
+  width: 100%;
   display: flex;
   flex-direction: column;
   flex: 1 0 0;
 }
 .header__main__primary-nav {
   display: flex;
-  justify-content: flex-end;
-  margin-left: auto;
+  padding-left: 5px;
+  justify-content: space-between;
   // Once screen is wide enough,
   // keeps primary nav on one line.
-  @media (min-width: 580px) {
-    min-width: 320px;
+  @media (min-width: 688px) {
+    min-width: 570px;
+    padding-left: 54px;
   }
 }
+.header__main__primary-nav > div:only-child {
+  margin-left: auto;
+}
+
 .nav__account,
 .nav__icons {
   display: flex;
@@ -141,29 +146,41 @@ $font-nav: Arial, Helvetica, sans-serif;
   flex-flow: wrap;
   align-items: center;
 }
+.nav-welcome-msg {
+  margin-right: 28px;
+  text-align: center;
+}
+.nav__icons {
+  @media (min-width: 1100px) {
+    // Once the header is wide enough,
+    // the space to the right is no
+    // longer needed.
+    // (Maintains min 44px clickable area)
+    margin-right: -10px;
+  }
+}
 
 // SECONDARY NAV
 .nav__pages {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   margin-left: 5px;
-  margin-right: 5px;
   margin-bottom: 5px;
   list-style: none;
+
+  // Once screen is wide enough,
+  // keeps primary nav on one line.
+  @media (min-width: 410px) {
+    min-width: 402px;
+  }
   @media (min-width: 688px) {
+    // needs space between logo and nav
+    min-width: 445px;
     padding-left: 54px;
   }
 }
-.nav,
-.pad {
-  margin: 5px;
-}
-.pad-s {
-  margin: 2px;
-}
-.nav.link:hover {
-  color: #ffe574;
-}
+
 // *****************************
 // BOOK (and USER)
 // *****************************
@@ -196,7 +213,6 @@ $font-nav: Arial, Helvetica, sans-serif;
   transition: background-color 0.3s ease-in-out;
 
   @media (min-width: 1100px) {
-    // width: 428px;
     max-width: 100%;
   }
 }
@@ -278,7 +294,7 @@ h2.error__title {
   text-align: center;
   margin: 5px;
 }
-li.error__msg {
+.error__msg {
   font-size: 16px;
 }
 .no-bull {
@@ -287,15 +303,15 @@ li.error__msg {
 // *****************************
 // PAGE (styles used on multiple pages)
 // *****************************
+
 .page-bounds {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5px;
-  max-width: 500px;
-
-  @media (min-width: 600px) {
-    width: 95%;
+  padding: 10px;
+  width: 100%;
+  @media (min-width: 500px) {
+    max-width: 500px;
   }
   @media (min-width: 1100px) {
     max-width: 1000px;
@@ -322,6 +338,7 @@ li.error__msg {
   display: flex;
   align-items: baseline;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .page-main {
   width: 100%;
@@ -357,6 +374,17 @@ li.error__msg {
     justify-content: center;
     flex-wrap: wrap;
   }
+}
+.page-main--form {
+  width: 100%;
+  @media (min-width: 1100px) {
+    width: 514px;
+  }
+}
+.page-main-border--top {
+  border-top: 3px groove $bg-secondary;
+  margin-top: 4px;
+  padding-top: 10px;
 }
 .width-100 {
   width: 100%;
@@ -447,17 +475,16 @@ h4.tcs-text {
 .tcs-border--top {
   border-top: 3px groove $text-light;
   margin-top: 4px;
+  padding-top: 10px;
 }
+
 // BUTTONS
 .button {
+  font-family: $font-primary;
   width: 100%;
-  padding: 12px;
+  padding: 12px 12px;
   text-align: center;
-  // background: $bg-primary;
-
   background-image: linear-gradient(to top, $bg-primary, $bg-primary-base);
-  // background-image: linear-gradient(to top, $bg-primary, $bg-primary-lighter);
-
   color: $text-light;
   cursor: pointer;
   border-radius: 5px;
@@ -470,7 +497,6 @@ h4.tcs-text {
   }
 }
 .button:hover {
-  // background: $bg-primary;
   background-image: linear-gradient(to top, $bg-primary, $bg-primary-lighter);
 }
 .tcs__main__buttons,
@@ -486,20 +512,33 @@ h4.tcs-text {
     width: 428px;
   }
 }
+
 .tcs__main__buttons-half,
 .page__main__buttons-half {
-  @media (min-width: 1100px) {
-    width: 428px;
+  @media (min-width: 500px) {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
   }
 }
-.button-half {
-  @media (min-width: 1100px) {
-    // max-width: fit-content;
-    min-width: 175px;
+.tcs__main__buttons-half--together,
+.page__main__buttons-half--together {
+  @media (min-width: 500px) {
+    width: 514px;
+    display: flex;
+    justify-content: space-around;
   }
 }
 
-// * {
-//   border: 1px solid red;
-//   padding: 1px;
-// }
+.button-half--tcs {
+  @media (min-width: 500px) {
+    min-width: 165px;
+    max-width: 200px;
+  }
+}
+.button-half {
+  @media (min-width: 500px) {
+    min-width: 165px;
+    max-width: 244px;
+  }
+}

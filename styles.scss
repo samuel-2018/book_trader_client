@@ -227,6 +227,9 @@ $font-nav: Arial, Helvetica, sans-serif;
   flex-direction: column;
 }
 // BOOK ONLY
+.book {
+  min-height: 112.5px;
+}
 .book__requests {
   display: flex;
   flex-direction: start;

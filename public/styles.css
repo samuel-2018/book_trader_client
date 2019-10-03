@@ -171,6 +171,9 @@ body {
   display: flex;
   flex-direction: column; }
 
+.book {
+  min-height: 112.5px; }
+
 .book__requests {
   display: flex;
   flex-direction: start; }

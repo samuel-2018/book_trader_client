@@ -39,6 +39,17 @@ class SignUp extends React.Component {
         };
 
         await this.context.onSignUp({ formDataJS });
+
+        // Upon successful login, goes to previous page.
+        if (
+          this.props.location.state.from.pathname !== "/signin" ||
+          this.props.location.state.from.pathname !== "/signup"
+        ) {
+          // last page was signin, so go to main page
+          this.props.history.push(this.props.location.state.from.pathname);
+        } else {
+          this.props.history.push("/books");
+        }
       } else {
         this.setState({ confirmPasswordError: true });
       }
@@ -65,9 +76,12 @@ class SignUp extends React.Component {
 
           {/* Form */}
 
-          <form onSubmit={this.onFormSubmit} className="page-text__normal">
+          <form
+            onSubmit={this.onFormSubmit}
+            className="page-text__normal page-main--form"
+          >
             <label className="label">
-              First Name <br />
+              *First Name <br />
               <input
                 type="text"
                 value={this.state.firstName}
@@ -76,47 +90,11 @@ class SignUp extends React.Component {
               />
             </label>
             <label className="label">
-              Last Name <br />
+              *Last Name <br />
               <input
                 type="text"
                 value={this.state.lastName}
                 onChange={e => this.setState({ lastName: e.target.value })}
-                className="input"
-              />
-            </label>
-            <label className="label">
-              Username <br />
-              <input
-                type="text"
-                value={this.state.username}
-                onChange={e => this.setState({ username: e.target.value })}
-                className="input"
-              />
-            </label>
-            <label className="label">
-              Email <br />
-              <input
-                type="text"
-                value={this.state.email}
-                onChange={e => this.setState({ email: e.target.value })}
-                className="input"
-              />
-            </label>
-            <label className="label">
-              Country <br />
-              <input
-                type="text"
-                value={this.state.country}
-                onChange={e => this.setState({ country: e.target.value })}
-                className="input"
-              />
-            </label>
-            <label className="label">
-              State <br />
-              <input
-                type="text"
-                value={this.state.state}
-                onChange={e => this.setState({ state: e.target.value })}
                 className="input"
               />
             </label>
@@ -130,7 +108,43 @@ class SignUp extends React.Component {
               />
             </label>
             <label className="label">
-              Password <br />
+              State <br />
+              <input
+                type="text"
+                value={this.state.state}
+                onChange={e => this.setState({ state: e.target.value })}
+                className="input"
+              />
+            </label>
+            <label className="label">
+              *Country <br />
+              <input
+                type="text"
+                value={this.state.country}
+                onChange={e => this.setState({ country: e.target.value })}
+                className="input"
+              />
+            </label>
+            <label className="label">
+              Email <br />
+              <input
+                type="text"
+                value={this.state.email}
+                onChange={e => this.setState({ email: e.target.value })}
+                className="input"
+              />
+            </label>
+            <label className="label">
+              *Username <br />
+              <input
+                type="text"
+                value={this.state.username}
+                onChange={e => this.setState({ username: e.target.value })}
+                className="input"
+              />
+            </label>
+            <label className="label">
+              *Password <br />
               <input
                 type="text"
                 value={this.state.password}
@@ -139,7 +153,7 @@ class SignUp extends React.Component {
               />
             </label>
             <label className="label">
-              Confirm Password <br />
+              *Confirm Password <br />
               <input
                 type="text"
                 value={this.state.confirmPassword}
@@ -148,15 +162,20 @@ class SignUp extends React.Component {
                 }
                 className="input"
               />
-              {this.state.confirmPasswordError === false
-                ? ""
-                : "Password must match confirmation."}
+              {this.state.confirmPasswordError === false ? (
+                ""
+              ) : (
+                <p className="error error__msg" role="alert">
+                  Password must match confirmation.
+                </p>
+              )}
             </label>
-            <div className="page__main__buttons">
-              <button type="submit" className="button">
+            <div>*Required fields.</div>
+            <div className="page__main__buttons-half page-main-border--top">
+              <button type="submit" className="button button-half">
                 Submit
               </button>
-              <button onClick={this.onCancel} className="button">
+              <button onClick={this.onCancel} className="button button-half">
                 Cancel
               </button>
             </div>

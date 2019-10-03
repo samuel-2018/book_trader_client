@@ -129,7 +129,8 @@ body {
   justify-content: space-between;
   padding: 5px 16px;
   border-radius: 5px;
-  margin: 5px; }
+  margin: 5px;
+  transition: background-color 0.3s ease-in-out; }
   @media (min-width: 1100px) {
     .book,
     .user {
@@ -154,6 +155,9 @@ body {
 
 .book__requests__usernames__name {
   font-size: 0.5rem; }
+
+.book__info__title {
+  font-size: larger; }
 
 .book-details {
   display: grid;
@@ -188,7 +192,8 @@ label {
   margin: 4px 0; }
 
 .error {
-  color: red; }
+  color: red;
+  font-family: "Noto Sans", sans-serif; }
 
 h2.error__title {
   font-size: 1.5rem;
@@ -197,6 +202,9 @@ h2.error__title {
 
 li.error__msg {
   font-size: 16px; }
+
+.no-bull {
+  list-style: none; }
 
 .page-bounds {
   display: flex;
@@ -260,7 +268,7 @@ li.error__msg {
   @media (min-width: 1100px) {
     .page-main--two-columns {
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: center;
       flex-wrap: wrap; } }
 
 .width-100 {
@@ -326,16 +334,41 @@ li.error__msg {
   color: #ecf3ff;
   text-align: center; }
 
-h3.tcs-text,
 .tcs-text {
   font-family: "Noto Sans", sans-serif;
   color: #ecf3ff;
   text-align: center;
   font-weight: bold; }
 
+h4.tcs-text {
+  font-family: "Noto Sans", sans-serif;
+  color: #ecf3ff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 19px; }
+
 .tcs-border--top {
   border-top: 3px groove #ecf3ff;
   margin-top: 4px; }
+
+.button {
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  background-image: linear-gradient(to top, #093a94, #2966d7);
+  color: #ecf3ff;
+  cursor: pointer;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 10px 0; }
+  @media (min-width: 1100px) {
+    .button {
+      width: 428px; } }
+
+.button:hover {
+  background-image: linear-gradient(to top, #093a94, #0d52d0); }
 
 @media (min-width: 1100px) {
   .tcs__main__buttons,
@@ -355,24 +388,4 @@ h3.tcs-text,
 
 @media (min-width: 1100px) {
   .button-half {
-    max-width: fit-content;
     min-width: 175px; } }
-
-.button {
-  width: 100%;
-  padding: 12px;
-  text-align: center;
-  background: #093a94;
-  color: #ecf3ff;
-  cursor: pointer;
-  border-radius: 5px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 18px;
-  margin: 10px 0; }
-  @media (min-width: 1100px) {
-    .button {
-      width: 428px; } }
-
-.button:hover {
-  background: #1261f1; }

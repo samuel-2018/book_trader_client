@@ -46,6 +46,8 @@ $text-primary: #093a94;
 $bg-light: #c7dbff;
 $text-light: #ecf3ff;
 $bg-primary: #093a94;
+$bg-primary-lighter: #0d52d0;
+$bg-primary-base: #2966d7;
 $bg-secondary: #4c80de;
 $bg-light: #ecf3ff;
 
@@ -191,6 +193,8 @@ $font-nav: Arial, Helvetica, sans-serif;
   border-radius: 5px;
   margin: 5px;
 
+  transition: background-color 0.3s ease-in-out;
+
   @media (min-width: 1100px) {
     // width: 428px;
     max-width: 100%;
@@ -218,6 +222,10 @@ $font-nav: Arial, Helvetica, sans-serif;
 
 .book__requests__usernames__name {
   font-size: 0.5rem;
+}
+
+.book__info__title {
+  font-size: larger;
 }
 
 // *****************************
@@ -263,6 +271,7 @@ label {
 // ERRORS
 .error {
   color: $text-warning;
+  font-family: $font-primary;
 }
 h2.error__title {
   font-size: 1.5rem;
@@ -272,7 +281,9 @@ h2.error__title {
 li.error__msg {
   font-size: 16px;
 }
-
+.no-bull {
+  list-style: none;
+}
 // *****************************
 // PAGE (styles used on multiple pages)
 // *****************************
@@ -343,7 +354,7 @@ li.error__msg {
   @media (min-width: 1100px) {
     // double column
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
   }
 }
@@ -419,18 +430,49 @@ li.error__msg {
   text-align: center;
 }
 
-h3.tcs-text,
 .tcs-text {
   font-family: $font-primary;
   color: $text-light;
   text-align: center;
   font-weight: bold;
 }
+h4.tcs-text {
+  font-family: $font-primary;
+  color: $text-light;
+  text-align: center;
+  font-weight: bold;
+  font-size: 19px;
+}
+
 .tcs-border--top {
   border-top: 3px groove $text-light;
   margin-top: 4px;
 }
 // BUTTONS
+.button {
+  width: 100%;
+  padding: 12px;
+  text-align: center;
+  // background: $bg-primary;
+
+  background-image: linear-gradient(to top, $bg-primary, $bg-primary-base);
+  // background-image: linear-gradient(to top, $bg-primary, $bg-primary-lighter);
+
+  color: $text-light;
+  cursor: pointer;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 10px 0;
+  @media (min-width: 1100px) {
+    width: 428px;
+  }
+}
+.button:hover {
+  // background: $bg-primary;
+  background-image: linear-gradient(to top, $bg-primary, $bg-primary-lighter);
+}
 .tcs__main__buttons,
 .page__main__buttons {
   @media (min-width: 1100px) {
@@ -452,28 +494,9 @@ h3.tcs-text,
 }
 .button-half {
   @media (min-width: 1100px) {
-    max-width: fit-content;
+    // max-width: fit-content;
     min-width: 175px;
   }
-}
-.button {
-  width: 100%;
-  padding: 12px;
-  text-align: center;
-  background: $bg-primary;
-  color: $text-light;
-  cursor: pointer;
-  border-radius: 5px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 18px;
-  margin: 10px 0;
-  @media (min-width: 1100px) {
-    width: 428px;
-  }
-}
-.button:hover {
-  background: lighten($bg-primary, 20%);
 }
 
 // * {

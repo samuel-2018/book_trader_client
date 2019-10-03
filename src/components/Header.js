@@ -30,7 +30,7 @@ const Header = props => {
               // Yes, display welcome message and "Sign Out" button.
               <>
                 <div className="nav__account">
-                  <span className="nav">
+                  <span className="nav nav-welcome-msg">
                     Welcome,{" "}
                     {context.user.firstName + " " + context.user.lastName}!
                   </span>
@@ -41,7 +41,7 @@ const Header = props => {
                     }}
                     className="nav link"
                   >
-                    Sign Out
+                    <div>Sign Out</div>
                   </Link>
                 </div>
                 <div className="nav__icons">
@@ -53,11 +53,13 @@ const Header = props => {
                     }}
                     className="nav link"
                   >
-                    <i
-                      className="nav link fas fa-user"
-                      aria-label="user profile"
-                      alt="user profile"
-                    ></i>
+                    <div className="nav-center">
+                      <i
+                        className="link fas fa-user"
+                        aria-label="user profile"
+                        alt="user profile"
+                      ></i>
+                    </div>
                   </Link>
                   {/* Basket */}
                   <Link
@@ -67,11 +69,13 @@ const Header = props => {
                     }}
                     className="nav link"
                   >
-                    <i
-                      className="nav link nav__icons__basket fas fa-shopping-basket"
-                      aria-label="trade basket"
-                      alt="trade basket"
-                    ></i>
+                    <div className="nav-center">
+                      <i
+                        className="link nav__icons__basket fas fa-shopping-basket"
+                        aria-label="trade basket"
+                        alt="trade basket"
+                      ></i>
+                    </div>
                   </Link>
                 </div>
               </>
@@ -85,7 +89,7 @@ const Header = props => {
                   }}
                   className="nav  link"
                 >
-                  Sign Up
+                  <div className="nav-center">Sign Up </div>
                 </Link>
                 <Link
                   to={{
@@ -94,7 +98,7 @@ const Header = props => {
                   }}
                   className="nav link"
                 >
-                  Sign In
+                  <div className="nav-center">Sign In</div>
                 </Link>
               </div>
             )}
@@ -111,7 +115,7 @@ const Header = props => {
                   }}
                   className="nav__pages__page nav link"
                 >
-                  Books
+                  <div className="nav-center">Books</div>
                 </Link>
               </li>
               <li className="nav-item">
@@ -122,7 +126,7 @@ const Header = props => {
                   }}
                   className="nav__pages__page nav link"
                 >
-                  Requests
+                  <div className="nav-center">Requests</div>
                 </Link>
               </li>
               <li className="nav__pages__page link">
@@ -133,7 +137,7 @@ const Header = props => {
                   }}
                   className="nav__pages__page nav link"
                 >
-                  Trades
+                  <div className="nav-center">Trades</div>
                 </Link>
               </li>
               <li className="nav-item">
@@ -144,7 +148,7 @@ const Header = props => {
                   }}
                   className="nav__pages__page nav link"
                 >
-                  Users
+                  <div className="nav-center">Users</div>
                 </Link>
               </li>
             </ul>

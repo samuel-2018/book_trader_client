@@ -78,7 +78,7 @@ class Profile extends React.Component {
               {this.context.user &&
               this.context.user.userId ===
                 parseInt(this.props.match.params.id) ? (
-                <div className="page__main__buttons-half">
+                <div className="page__main__buttons-half--together">
                   <button
                     className="button button-half"
                     onClick={this.onClickViewBooks}

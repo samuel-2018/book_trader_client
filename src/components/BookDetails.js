@@ -119,7 +119,7 @@ class BookDetails extends React.Component {
               </dl>
 
               {this.context.user ? (
-                <div className="page__main__buttons page__main__buttons-half">
+                <div className="page__main__buttons page__main__buttons-half--together">
                   {/* To non-owner: Show "Add To Basket" Button */}
                   {!this.context
                     .getBasket()

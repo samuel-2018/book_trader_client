@@ -106,29 +106,41 @@ export const Request = props => {
             </div>
           </div>
         </div>
-        <div className="tcs__main__buttons">
-          {/* To requester: Show "Cancel Request" Button */}
-          {currentUserId === requesterId ? (
-            <button className="button button-full" onClick={onDeleteRequest}>
-              Cancel Request
-            </button>
-          ) : (
-            ""
-          )}
-          {/* To requestee: Show "Accept" and "Reject" Buttons */}
-          {currentUserId === requesteeId ? (
-            <>
-              <button className="button button-half" onClick={onAccept}>
-                Accept
-              </button>
-              <button className="button button-half" onClick={onDeleteRequest}>
-                Reject
-              </button>{" "}
-            </>
-          ) : (
-            ""
-          )}
-        </div>
+        {currentUserId === requesterId || currentUserId === requesteeId ? (
+          <div className="tcs-border--top">
+            <div className="tcs__main__buttons">
+              {/* To requester: Show "Cancel Request" Button */}
+              {currentUserId === requesterId ? (
+                <button
+                  className="button button-full"
+                  onClick={onDeleteRequest}
+                >
+                  Cancel Request
+                </button>
+              ) : (
+                ""
+              )}
+            </div>
+            {/* To requestee: Show "Accept" and "Reject" Buttons */}
+            {currentUserId === requesteeId ? (
+              <div className="tcs__main__buttons-half">
+                <button className="button button-half--tcs" onClick={onAccept}>
+                  Accept
+                </button>
+                <button
+                  className="button button-half--tcs"
+                  onClick={onDeleteRequest}
+                >
+                  Reject
+                </button>{" "}
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </section>
   );

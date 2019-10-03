@@ -178,11 +178,17 @@ class Basket extends React.Component {
                 ""
               )}
 
-              <div className="tcs__main__buttons tcs-border--top">
-                <button className="button button-half" onClick={this.onSubmit}>
+              <div className="tcs__main__buttons-half tcs-border--top">
+                <button
+                  className="button button-half--tcs"
+                  onClick={this.onSubmit}
+                >
                   Submit
                 </button>
-                <button className="button button-half" onClick={this.onGoHome}>
+                <button
+                  className="button button-half--tcs"
+                  onClick={this.onGoHome}
+                >
                   Home
                 </button>
               </div>

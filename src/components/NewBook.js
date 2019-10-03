@@ -69,7 +69,7 @@ class NewBook extends React.Component {
 
           <form
             onSubmit={this.onFormSubmit}
-            className="page-text__normal"
+            className="page-text__normal page-main--form"
             role="form"
           >
             <label className="label">
@@ -129,11 +129,11 @@ class NewBook extends React.Component {
               />
             </label>
 
-            <div className="page__main__buttons">
-              <button type="submit" className="button">
+            <div className="page__main__buttons-half page-main-border--top">
+              <button type="submit" className="button button-half">
                 Submit
               </button>
-              <button onClick={this.onCancel} className="button">
+              <button onClick={this.onCancel} className="button button-half">
                 Cancel
               </button>
             </div>

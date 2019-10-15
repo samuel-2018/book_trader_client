@@ -1,7 +1,5 @@
 import React from "react";
 export const validationMessages = validationErrors => {
-  // console.log(validationErrors);
-
   return (
     <>
       {/* Are there validation errors? */}

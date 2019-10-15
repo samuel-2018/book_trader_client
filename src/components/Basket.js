@@ -11,7 +11,9 @@ class Basket extends React.Component {
     this.state = {
       takeBooks: [],
       giveBooks: [],
+      // Each trade request can only be for books from one other user
       isOneTrader: true,
+      // Trade must have at least one book to give and one to take
       isRealTrade: true
     };
   }
@@ -56,10 +58,10 @@ class Basket extends React.Component {
   onSubmit = async () => {
     try {
       // Are there both give and take books?
-      // local variable is used for flag (state update is delayed)
+      // Local variable is used for flag (state update is delayed)
       const isRealTrade =
         this.state.takeBooks.length && this.state.giveBooks.length;
-      // state is used for rendering error message
+      // State is used for rendering error message
       this.setState({
         isRealTrade
       });
@@ -115,49 +117,69 @@ class Basket extends React.Component {
     this.props.history.push("/books");
   };
 
+  onRemoveBook = bookId => {
+    this.setState(prevState => {
+      return {
+        // Removes a book from basket
+        takeBooks: prevState.takeBooks.filter(book => book.bookId !== bookId),
+        giveBooks: prevState.giveBooks.filter(book => book.bookId !== bookId)
+      };
+    });
+    // removes bookId from global state basket
+    this.context.onRemoveFromBasket({ bookId });
+
+    // Note: This task could be done without calling setState.
+    // Call onRemoveFromBasket and then call loadBooks.
+    // But this would result in another API call.
+  };
+
   render() {
+    const bookJSX = book => {
+      return (
+        <div
+          className="book-wrapper-for-remove"
+          key={`book-${book.bookId}-basket`}
+        >
+          <Book bookData={book} hideRequests={true} />
+          <button
+            className="remove-item-btn"
+            onClick={() => this.onRemoveBook(book.bookId)}
+            aria-label="remove this book from basket"
+          >
+            <i className="far fa-window-close remove-item-btn_x"></i>
+          </button>
+        </div>
+      );
+    };
+
     return (
       <DocumentTitle title="Basket - Book Trader">
         <div className="page-bounds" role="main">
           {/* Section Title */}
 
           <div className="page-header">
-            <h1 role="heading">Trading Basket</h1>
+            <h1>Trading Basket</h1>
           </div>
 
           <section className="tcs-container">
             <div className="tcs__main tcs__main--center">
               <div className="tcs__main__content">
                 <div className="tcs__main__content__column">
-                  <h3 className="tcs-text" role="heading">
-                    Books I Want
-                  </h3>
+                  <h3 className="tcs-text">Books I Want</h3>
                   {/* Books List */}
                   <div>
                     {this.state.takeBooks.map(book => {
-                      return (
-                        <Book
-                          key={`book-${book.bookId}-basket`}
-                          bookData={book}
-                        />
-                      );
+                      return bookJSX(book);
                     })}
                   </div>
                 </div>
 
                 <div className="tcs__main__content__column">
-                  <h3 className="tcs-text" role="heading">
-                    Books I'm Offering
-                  </h3>
+                  <h3 className="tcs-text">Books I'm Offering</h3>
                   {/* Books List */}
                   <div>
                     {this.state.giveBooks.map(book => {
-                      return (
-                        <Book
-                          key={`book-${book.bookId}-basket`}
-                          bookData={book}
-                        />
-                      );
+                      return bookJSX(book);
                     })}
                   </div>
                 </div>
@@ -172,7 +194,8 @@ class Basket extends React.Component {
               )}
               {!this.state.isRealTrade ? (
                 <div className="tcs__main__messages" role="alert">
-                  That's not a fair trade!
+                  That's not a fair trade! You must select at least one book
+                  that you want and at least one that you will offer.
                 </div>
               ) : (
                 ""

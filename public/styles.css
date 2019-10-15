@@ -50,7 +50,8 @@ body {
   display: flex;
   justify-content: center;
   font-size: 14px;
-  width: 100%; }
+  width: 100%;
+  box-shadow: 0 2px 2px gray; }
 
 .header-bounds {
   padding: 10px;
@@ -146,6 +147,7 @@ body {
 
 .book,
 .user {
+  position: relative;
   box-sizing: border-box;
   background-color: white;
   font-family: "Noto Sans", sans-serif;
@@ -156,6 +158,7 @@ body {
   padding: 5px 16px;
   border-radius: 5px;
   margin: 5px;
+  box-shadow: 0.5px 0.5px 2px gray;
   transition: background-color 0.3s ease-in-out; }
   @media (min-width: 1100px) {
     .book,
@@ -321,6 +324,27 @@ h2.error__title {
   flex-direction: column;
   align-items: center; }
 
+.remove-item-btn {
+  border: none;
+  background: inherit;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  right: 2px; }
+
+.remove-item-btn_x {
+  font-size: 44px;
+  color: #9e2626; }
+
+.remove-item-btn:hover > .remove-item-btn_x {
+  color: red; }
+
+.book-wrapper-for-remove {
+  position: relative; }
+
+.book__requests__empty-space {
+  width: 44px; }
+
 .tcs-container {
   margin-top: 16px;
   margin-bottom: 16px;
@@ -349,7 +373,8 @@ h2.error__title {
   flex-direction: column;
   justify-content: center;
   padding: 10px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px gray; }
 
 .tcs__main--right {
   margin-left: 40px; }
@@ -446,4 +471,10 @@ h4.tcs-text {
 @media (min-width: 500px) {
   .button-half {
     min-width: 165px;
-    max-width: 244px; } }
+    max-width: 234px; } }
+
+.warning-background {
+  background-image: linear-gradient(to top, #851e1e, #a84646); }
+
+.warning-background:hover {
+  background-image: linear-gradient(to top, #6e1313, #a12e2e); }

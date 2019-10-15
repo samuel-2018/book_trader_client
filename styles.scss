@@ -34,6 +34,7 @@ $bg-secondary: #4c80de;
 $bg-light: #ecf3ff;
 
 $text-warning: red;
+$text-warning-muted: rgb(158, 38, 38);
 
 $font-primary: "Noto Sans", sans-serif;
 $font-nav: Arial, Helvetica, sans-serif;
@@ -61,7 +62,6 @@ $font-nav: Arial, Helvetica, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  // background-color: greenyellow;
 }
 
 .nav,
@@ -82,7 +82,9 @@ $font-nav: Arial, Helvetica, sans-serif;
   justify-content: center;
   font-size: 14px;
   width: 100%;
+  box-shadow: 0 2px 2px gray;
 }
+
 .header-bounds {
   padding: 10px;
   display: flex;
@@ -198,6 +200,8 @@ $font-nav: Arial, Helvetica, sans-serif;
 }
 .book,
 .user {
+  position: relative;
+
   box-sizing: border-box;
   background-color: white;
   font-family: $font-primary;
@@ -209,6 +213,7 @@ $font-nav: Arial, Helvetica, sans-serif;
   padding: 5px 16px;
   border-radius: 5px;
   margin: 5px;
+  box-shadow: 0.5px 0.5px 2px gray;
 
   transition: background-color 0.3s ease-in-out;
 
@@ -398,6 +403,34 @@ h2.error__title {
   flex-direction: column;
   align-items: center;
 }
+// *****************************
+// Trading Basket
+// *****************************
+.remove-item-btn {
+  border: none;
+  background: inherit;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  right: 2px;
+}
+.remove-item-btn_x {
+  font-size: 44px;
+  color: $text-warning-muted;
+}
+.remove-item-btn:hover > .remove-item-btn_x {
+  color: $text-warning;
+}
+// It seems that only sibling elements
+// can block elements.
+// (Nested elements cannot block hover
+// events for their parent.)
+.book-wrapper-for-remove {
+  position: relative;
+}
+.book__requests__empty-space {
+  width: 44px;
+}
 
 // *****************************
 // TCS (TRADE CARD STYLE)
@@ -431,6 +464,7 @@ h2.error__title {
   justify-content: center;
   padding: 10px;
   border-radius: 5px;
+  box-shadow: 1px 1px 4px gray;
 }
 .tcs__main--right {
   margin-left: 40px;
@@ -448,12 +482,9 @@ h2.error__title {
   }
 }
 .tcs__main__content > div {
-  //TODO Is this still needed?
   @media (min-width: 1100px) {
     width: 100%;
   }
-}
-.tcs__main__content__column {
 }
 .tcs__main__messages {
   font-family: $font-primary;
@@ -542,6 +573,13 @@ h4.tcs-text {
 .button-half {
   @media (min-width: 500px) {
     min-width: 165px;
-    max-width: 244px;
+    max-width: 234px;
+    // max-width: 244px;
   }
+}
+.warning-background {
+  background-image: linear-gradient(to top, rgb(133, 30, 30), rgb(168, 70, 70));
+}
+.warning-background:hover {
+  background-image: linear-gradient(to top, rgb(110, 19, 19), rgb(161, 46, 46));
 }

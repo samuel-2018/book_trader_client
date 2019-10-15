@@ -14,6 +14,7 @@ import { BookDetails } from "./BookDetails";
 import { SignUp } from "./SignUp";
 import { NewBookWithPR } from "./NewBook";
 import { Profile } from "./Profile";
+import { ProfileUpdateWithPR } from "./ProfileUpdate";
 import { Requests } from "./Requests";
 import { UserBooks } from "./UserBooks";
 import { SignIn } from "./SignIn";
@@ -28,6 +29,7 @@ const HeaderWithRouter = withRouter(Header);
 class App extends React.Component {
   static contextType = Context;
   componentDidMount() {
+    // Looks for cookies, logs user in
     this.context.onLoad();
   }
 
@@ -39,7 +41,7 @@ class App extends React.Component {
           <Redirect exact path="/" to="/books" />
           <Route exact path="/books" component={Books} />
           <Route exact path="/basket" component={BasketWithPR} />
-          {/* A unique key is required to create a new component instance if component is already mounted. */}
+          {/*Note: A unique key is required to create a new component instance if component is already mounted. */}
           <Route
             exact
             path="/books/:id"
@@ -50,6 +52,11 @@ class App extends React.Component {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/newbook" component={NewBookWithPR} />
           <Route exact path="/users/:id" component={Profile} />
+          <Route
+            exact
+            path="/users/:id/update"
+            component={ProfileUpdateWithPR}
+          />
           <Route exact path="/users" component={Users} />
           <Route exact path="/requests" component={Requests} />
           <Route exact path="/trades" component={Trades} />

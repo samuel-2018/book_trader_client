@@ -17,31 +17,35 @@ export const Book = props => {
           <p className="book__info__owner pad-s">{`From the library of ${props.bookData.owner.username} in ${props.bookData.owner.city}, ${props.bookData.owner.state}, ${props.bookData.owner.country}`}</p>
         </div>
 
-        <div className="book__requests">
-          <i
-            className="book__requests__icon fas fa-comments pad-s"
-            aria-label="requests for this book"
-          />
+        {!props.hideRequests ? (
+          <div className="book__requests">
+            <i
+              className="book__requests__icon fas fa-comments pad-s"
+              aria-label="requests for this book"
+            />
 
-          <div className="book__requests__info">
-            <p className="book__requests__count pad-s">
-              {props.bookData.takeBooksRequest.length}
-            </p>
+            <div className="book__requests__info">
+              <p className="book__requests__count pad-s">
+                {props.bookData.takeBooksRequest.length}
+              </p>
 
-            <div className="book__requests__usernames">
-              {props.bookData.takeBooksRequest.map(request => {
-                return (
-                  <p
-                    className="book__requests__usernames__name pad-s"
-                    // key={`book-${props.bookData.bookId}-requester-${request.requesterId}-transactionId-${props.transactionId}`}
-                  >
-                    {request.requester.username}
-                  </p>
-                );
-              })}
+              <div className="book__requests__usernames">
+                {props.bookData.takeBooksRequest.map(request => {
+                  return (
+                    <p
+                      className="book__requests__usernames__name pad-s"
+                      key={`book-${props.bookData.bookId}-user-${request.requester.username}`}
+                    >
+                      {request.requester.username}
+                    </p>
+                  );
+                })}
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="book__requests__empty-space"></div>
+        )}
       </div>
     </Link>
   );

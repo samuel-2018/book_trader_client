@@ -16,9 +16,6 @@ class SignIn extends React.Component {
 
   onFormSubmit = async event => {
     event.preventDefault();
-
-    console.log("form submit pressed");
-
     try {
       await this.context.onSignIn({
         username: this.state.username,
@@ -27,13 +24,13 @@ class SignIn extends React.Component {
 
       // Upon successful login, goes to previous page.
       if (this.props.location.state.from.pathname !== "/signin") {
-        // last page was signin, so go to main page
+        // Last page was signin, so go to main page
         this.props.history.push(this.props.location.state.from.pathname);
       } else {
         this.props.history.push("/books");
       }
     } catch (error) {
-      // show sign in error
+      // Show sign in error
       this.setState({ showSignInError: true });
     }
   };
@@ -48,15 +45,13 @@ class SignIn extends React.Component {
         <div className="page-bounds" role="main">
           {/* Page Title */}
           <div className="page-header">
-            <h1 role="heading">Sign In</h1>
+            <h1>Sign In</h1>
           </div>
 
           {/* Sign In Error */}
           {this.state.showSignInError ? (
             <div role="alert">
-              <h2 className="error error__title" role="heading">
-                Unsuccessful Sign-in
-              </h2>
+              <h2 className="error error__title">Unsuccessful Sign-in</h2>
               <div className=" ">
                 <ul className="no-bull">
                   {/* Displays errors */}

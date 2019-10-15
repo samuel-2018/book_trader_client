@@ -52,7 +52,7 @@ class Trades extends React.Component {
         <div className="page-bounds" role="main">
           {/* Section Title */}
           <div className="page-header">
-            <h1 role="heading">Trades</h1>
+            <h1>Trades</h1>
           </div>
 
           <div className="page-main">

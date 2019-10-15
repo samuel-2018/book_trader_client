@@ -45,7 +45,7 @@ class SignUp extends React.Component {
           this.props.location.state.from.pathname !== "/signin" ||
           this.props.location.state.from.pathname !== "/signup"
         ) {
-          // last page was signin, so go to main page
+          // Last page was signin, so go to main page
           this.props.history.push(this.props.location.state.from.pathname);
         } else {
           this.props.history.push("/books");
@@ -68,7 +68,7 @@ class SignUp extends React.Component {
         <div className="page-bounds" role="main">
           {/* Page Title */}
           <div className="page-header">
-            <h1 role="heading">Sign Up</h1>
+            <h1>Sign Up</h1>
           </div>
 
           {/* Validation Errors */}

@@ -70,13 +70,13 @@ class UserBooks extends React.Component {
             : "User's Books - Book Trader"
         }'s Books - Book Trader`}
       >
-        <div className="page-bounds" role="heading">
+        <div className="page-bounds">
           {/* Is username ready? */}
           {this.state.username !== "" ? (
             <div className="wrapper__100">
               {/* Page Title */}
               <div className="page-header">
-                <h1 role="heading">{this.state.username}'s Books</h1>
+                <h1>{this.state.username}'s Books</h1>
               </div>
 
               {/* Books List */}
@@ -88,7 +88,7 @@ class UserBooks extends React.Component {
                 </div>
               ) : (
                 <div className="page-header">
-                  <h2 role="heading">Nothing found.</h2>
+                  <h2>Nothing found.</h2>
                 </div>
               )}
               {this.context.user &&
@@ -105,7 +105,7 @@ class UserBooks extends React.Component {
           ) : (
             <div className="page-bounds">
               <div className="page-header">
-                <h1 role="heading">Loading...</h1>
+                <h1>Loading...</h1>
               </div>
             </div>
           )}

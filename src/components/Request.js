@@ -15,7 +15,7 @@ export const Request = props => {
   } = props.requestData;
   const { currentUserId, reloadCb, renderedByThis } = props;
 
-  // Same for "Cancel Request" and "Reject"
+  // Function used by "Cancel Request" and "Reject" buttons
   const onDeleteRequest = async () => {
     try {
       // Get user auth info
@@ -71,9 +71,7 @@ export const Request = props => {
       <div className="tcs__main tcs__main--right">
         <div className="tcs__main__content">
           <div className="tcs__main__content__column">
-            <h3 className="tcs-text" role="heading">
-              Wants
-            </h3>
+            <h3 className="tcs-text">Wants</h3>
             {/* Books List */}
             <div>
               {takeBooksRequest.map(book => {
@@ -81,7 +79,6 @@ export const Request = props => {
                   <Book
                     key={`book-${book.bookId}request-${requestId}`}
                     bookData={book}
-                    // transactionId={requestId}
                   />
                 );
               })}
@@ -89,9 +86,7 @@ export const Request = props => {
           </div>
 
           <div className="tcs__main__content__column">
-            <h3 className="tcs-text" role="heading">
-              Offers
-            </h3>
+            <h3 className="tcs-text">Offers</h3>
             {/* Books List */}
             <div>
               {giveBooksRequest.map(book => {
@@ -99,7 +94,6 @@ export const Request = props => {
                   <Book
                     key={`book-${book.bookId}request-${requestId}`}
                     bookData={book}
-                    // transactionId={requestId}
                   />
                 );
               })}

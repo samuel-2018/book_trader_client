@@ -13,9 +13,8 @@ export const Trade = props => {
   } = props.tradeData;
 
   return (
-    // key={`trade-${tradeId}`}
     <section className="tcs-container">
-      <h3 className="tcs__header" role="heading">
+      <h3 className="tcs__header">
         <i
           className="tcs__header__img  fas fa-exchange-alt"
           aria-label="trade"
@@ -28,9 +27,7 @@ export const Trade = props => {
       <div className="tcs__main tcs__main--right">
         <div className="tcs__main__content">
           <div className="tcs__main__content__column">
-            <h4 className="tcs-text" role="heading">
-              {requester.username} Received
-            </h4>
+            <h4 className="tcs-text">{requester.username} Received</h4>
             {/* Books List */}
             <div>
               {takeBooksTrade.map(book => {
@@ -38,7 +35,6 @@ export const Trade = props => {
                   <Book
                     key={`book-${book.bookId}request-${tradeId}`}
                     bookData={book}
-                    // transactionId={tradeId}
                   />
                 );
               })}
@@ -46,9 +42,7 @@ export const Trade = props => {
           </div>
 
           <div className="tcs__main__content__column">
-            <h4 className="tcs-text" role="heading">
-              {requestee.username} Received
-            </h4>
+            <h4 className="tcs-text">{requestee.username} Received</h4>
             {/* Books List */}
             <div>
               {giveBooksTrade.map(book => {
@@ -56,7 +50,6 @@ export const Trade = props => {
                   <Book
                     key={`book-${book.bookId}request-${tradeId}`}
                     bookData={book}
-                    // transactionId={tradeId}
                   />
                 );
               })}

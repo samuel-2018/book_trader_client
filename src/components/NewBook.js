@@ -20,7 +20,6 @@ class NewBook extends React.Component {
   onFormSubmit = async event => {
     event.preventDefault();
     try {
-      console.log("form submit pressed");
       // Get user auth info
       const { username, password } = this.context.authenticatedUser;
 
@@ -59,7 +58,7 @@ class NewBook extends React.Component {
         <div className="page-bounds" role="main">
           {/* Page Title */}
           <div className="page-header">
-            <h1 role="heading">New Book</h1>
+            <h1>New Book</h1>
           </div>
 
           {/* Validation Errors */}
@@ -70,7 +69,6 @@ class NewBook extends React.Component {
           <form
             onSubmit={this.onFormSubmit}
             className="page-text__normal page-main--form"
-            role="form"
           >
             <label className="label">
               Title <br />

@@ -69,7 +69,7 @@ class Requests extends React.Component {
         <div className="page-bounds" role="main">
           {/* Section Title */}
           <div className="page-header">
-            <h1 role="heading">Requests</h1>
+            <h1>Requests</h1>
           </div>
           {this.context.user ? (
             // User signed in
@@ -77,7 +77,7 @@ class Requests extends React.Component {
             <div className="page-main">
               {/* Section Sub Title */}
               <div className="page-header">
-                <h2 role="heading">Requests for your books</h2>
+                <h2>Requests for your books</h2>
               </div>
               {/* Request List */}
               <div className="width-100">
@@ -89,7 +89,7 @@ class Requests extends React.Component {
               </div>
               {/* Section  Sub Title */}
               <div className="page-header">
-                <h2 role="heading">Your requests for books</h2>
+                <h2>Your requests for books</h2>
               </div>
               {/* Request List */}
               <div className="width-100">
@@ -101,7 +101,7 @@ class Requests extends React.Component {
               </div>
               {/* Section Sub Title */}
               <div className="page-header">
-                <h2 role="heading">All other requests</h2>
+                <h2>All other requests</h2>
               </div>
               {/* Request List */}
 
@@ -123,11 +123,6 @@ class Requests extends React.Component {
               {this.getRequests(this.state.requests)}
             </div>
           )}
-
-          {/* Create New Book Button */}
-          {/* <button className="button" onClick={this.onClickNew}>
-          <i className="fas fa-plus"></i> Create New Book
-        </button> */}
         </div>
       </DocumentTitle>
     );

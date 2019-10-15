@@ -38,8 +38,8 @@ class Books extends React.Component {
         <div className="page-bounds" role="main">
           {/* Page Title */}
           <div className="page-header  same-line">
-            <h1 role="heading">Books</h1>
-            <h2 role="heading">available for trade</h2>
+            <h1>Books</h1>
+            <h2>available for trade</h2>
           </div>
 
           {/* Books List */}

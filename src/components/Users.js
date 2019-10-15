@@ -32,10 +32,10 @@ class Users extends React.Component {
   render() {
     return (
       <DocumentTitle title="Users - Book Trader">
-        <div className="page-bounds" role="heading">
+        <div className="page-bounds">
           {/* Page Title */}
           <div className="page-header">
-            <h1 role="heading">Users</h1>
+            <h1>Users</h1>
           </div>
 
           {/* User List */}

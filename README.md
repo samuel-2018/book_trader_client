@@ -1,3 +1,27 @@
+# Client: Manage a Book Trading Club
+
+## Description
+
+This full-stack app was designed to fulfill the following user stories from the [“Manage a Book Trading Club” code challenge on freeCodeCamp](https://learn.freecodecamp.org/coding-interview-prep/take-home-projects/manage-a-book-trading-club):
+
+“**User Story**: I can view all books posted by every user.”
+
+“**User Story**: I can add a new book.”
+
+“**User Story**: I can update my settings to store my full name, city, and state.”
+
+“**User Story**: I can propose a trade and wait for the other user to accept the trade.”
+
+Technologies used in this project include, on the back end, Node.js, Express, and Sequelize, on the front end, React, JSX, React Router, React Context API, Create React App, and Axios.
+
+## How to start app
+
+Navigate to the root folder that contains this README file. Run ‘npm install’ to add dependencies. Run 'npm start' to launch app. Open 'http://localhost:3000/' in your browser.
+
+(Using the client side of this app depends upon having [setup the API](https://github.com/samuel-2018/book_trader_api) and its database.)
+
+# Create React App Readme
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

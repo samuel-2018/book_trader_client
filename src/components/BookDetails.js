@@ -47,7 +47,7 @@ class BookDetails extends React.Component {
       // Get user auth info
       const { username, password } = await this.context.authenticatedUser;
 
-      // Delete request from database
+      // Delete book from database
       await this.context.sendRequest({
         url: `/books/${bookId}`,
         method: "DELETE",
@@ -69,7 +69,7 @@ class BookDetails extends React.Component {
         <div className="page-bounds" role="main">
           {/* Page Title */}
           <div className="page-header">
-            <h1 role="heading">Book Details</h1>
+            <h1>Book Details</h1>
           </div>
           {/* Book Details */}
 
@@ -132,7 +132,7 @@ class BookDetails extends React.Component {
                     </button>
                   ) : (
                     <button
-                      className="button button-half"
+                      className="button button-half "
                       onClick={this.onRemoveFromBasket}
                     >
                       Remove from Basket
@@ -142,10 +142,10 @@ class BookDetails extends React.Component {
                   {this.context.user.userId === this.state.book.ownerId ? (
                     <>
                       <button
-                        className="button button-half"
+                        className="button button-half warning-background"
                         onClick={this.onDelete}
                       >
-                        Delete
+                        Delete Book
                       </button>{" "}
                     </>
                   ) : (

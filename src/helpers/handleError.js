@@ -45,7 +45,7 @@ export function handleError({ error }) {
       this.props.history.replace(`/error`);
     }
   } catch (error) {
-    console.log("error created in the error handler");
+    // console.log("error created in the error handler");
 
     // Handles errors created in the error handler
     window.location.pathname = "/error";

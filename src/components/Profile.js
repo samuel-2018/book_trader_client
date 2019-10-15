@@ -1,6 +1,7 @@
 import React from "react";
 import { Context } from "../contexts/globalContext";
 import DocumentTitle from "react-document-title";
+import { Link } from "react-router-dom";
 
 class Profile extends React.Component {
   static contextType = Context;
@@ -14,11 +15,10 @@ class Profile extends React.Component {
   };
 
   componentDidMount() {
-    {
-      /* first checks if context is ready,
-    then checks if current user and param
-    ID are the same. */
-    }
+    // First checks if context is ready,
+    // then checks if current user and param
+    // ID are the same.
+
     if (
       this.context.user &&
       this.context.user.userId === this.props.match.params.id
@@ -41,11 +41,24 @@ class Profile extends React.Component {
         });
     }
   }
+
   onClickNew = () => {
     this.props.history.push("/newbook");
   };
 
   render() {
+    const profileJSX = () => {
+      return (
+        <section className="page-main">
+          <i className="page-text__jumbo fas fa-user-circle"></i>
+          <div className="page-text__large">
+            <p>{`${this.state.profile.firstName} ${this.state.profile.lastName}`}</p>
+            <p>{`${this.state.profile.city}, ${this.state.profile.state}, ${this.state.profile.country}`}</p>
+          </div>
+        </section>
+      );
+    };
+
     return (
       <DocumentTitle
         title={`${
@@ -58,52 +71,75 @@ class Profile extends React.Component {
           {/* Checks for empty object (non-Date obj) */}
           {Object.keys(this.state.profile).length ? (
             <div className="page-bounds" role="main">
-              {/* Page Title */}
-              <div className="page-header">
-                <h1 role="heading">{this.state.profile.username}'s Profile</h1>
-              </div>
-
-              {/* Profile */}
-              <section className="page-main">
-                <i className="page-text__jumbo fas fa-user-circle"></i>
-                <div className="page-text__large">
-                  <p>{`${this.state.profile.firstName} ${this.state.profile.lastName}`}</p>
-                  <p>{`${this.state.profile.city}, ${this.state.profile.state}, ${this.state.profile.country}`}</p>
-                </div>
-              </section>
-
               {/* View books button */}
 
-              {/* To profile owner: Show "View Your Books" Button */}
+              {/* To profile owner: Show "View Your Books" Button
+                   and update profile icon link */}
               {this.context.user &&
               this.context.user.userId ===
                 parseInt(this.props.match.params.id) ? (
-                <div className="page__main__buttons-half--together">
-                  <button
-                    className="button button-half"
-                    onClick={this.onClickViewBooks}
-                  >
-                    View Your Books
-                  </button>
-                  {/* Create New Book Button */}
-                  <button
-                    className="button button-half"
-                    onClick={this.onClickNew}
-                  >
-                    <i className="fas fa-plus"></i> Create New Book
-                  </button>
-                </div>
+                <>
+                  {/* Page Title */}
+                  <div className="page-header">
+                    <h1>
+                      {" "}
+                      Profile{" "}
+                      <Link
+                        to={{
+                          pathname: `/users/${this.context.user.userId}/update`,
+                          state: { from: this.location }
+                        }}
+                        className=""
+                      >
+                        <i
+                          className="fas fa-edit"
+                          aria-label="update profile"
+                          alt="update profile"
+                        ></i>
+                      </Link>
+                    </h1>
+                  </div>
+
+                  {/* Profile */}
+                  {profileJSX()}
+
+                  <div className="page__main__buttons-half--together">
+                    <button
+                      className="button button-half"
+                      onClick={this.onClickViewBooks}
+                    >
+                      View Your Books
+                    </button>
+                    {/* Create New Book Button */}
+                    <button
+                      className="button button-half"
+                      onClick={this.onClickNew}
+                    >
+                      <i className="fas fa-plus"></i> Create New Book
+                    </button>
+                  </div>
+                </>
               ) : (
                 //To everyone else: Show "View Username's Books" Button
-                <button className="button" onClick={this.onClickViewBooks}>
-                  View {this.state.profile.username}'s Books
-                </button>
+                <>
+                  {/* Page Title */}
+                  <div className="page-header">
+                    <h1>{this.state.profile.username}'s Profile</h1>
+                  </div>
+
+                  {/* Profile */}
+                  {profileJSX()}
+
+                  <button className="button" onClick={this.onClickViewBooks}>
+                    View {this.state.profile.username}'s Books
+                  </button>
+                </>
               )}
             </div>
           ) : (
             <div className="page-bounds">
               <div className="page-header">
-                <h1 role="heading">Loading...</h1>
+                <h1>Loading...</h1>
               </div>
             </div>
           )}

@@ -36,7 +36,8 @@ class Provider extends React.Component {
   onRemoveFromBasket = ({ bookId }) => {
     this.setState(prevState => {
       const reducedBasket = prevState.basket.filter(number => {
-        return number !== bookId;
+        // (Basket sends int, Books sends string)
+        return number !== bookId.toString();
       });
       return { basket: reducedBasket };
     });
@@ -58,14 +59,17 @@ class Provider extends React.Component {
     Cookies.set("authenticatedUser", { username, password }, { expires: 1 });
   };
 
+  // Set user in state
   setUserLocal = ({ user }) => {
     this.setState({ user });
   };
 
+  // Get user from state
   getUserLocal = () => {
     return this.state.user;
   };
 
+  // Get user by calling the API
   getUserAPI = async ({ username, password }) => {
     try {
       const result = await sendRequest({
@@ -80,10 +84,12 @@ class Provider extends React.Component {
     }
   };
 
+  // Get user from state
   getAuthUserLocal = () => {
-    return this.state.getAuthUserLocal;
+    return this.state.authenticatedUser;
   };
 
+  // Set user in state
   setAuthUserLocal = () => {
     this.setState({
       authenticatedUser: this.getCookies()
@@ -102,6 +108,27 @@ class Provider extends React.Component {
       username: formDataJS.username,
       password: formDataJS.password
     });
+
+    // Caller handles errors.
+  };
+
+  onProfileUpdate = async ({ formDataJS }) => {
+    const { password, username } = this.getAuthUserLocal();
+
+    // The API requires the password be included in the form.
+    formDataJS.password = password;
+
+    // Updates user
+    await sendRequest({
+      url: `/users/${this.state.user.userId}`,
+      method: "PUT",
+      data: formDataJS,
+      password,
+      username
+    });
+
+    // Updates cookie and local user data with API data
+    await this.onSignIn({ password, username });
 
     // Caller handles errors.
   };
@@ -135,12 +162,12 @@ class Provider extends React.Component {
     this.setAuthUserLocal({ authenticatedUser: null });
   };
 
+  // Called by App.js on componentDidMount.
+  // Looks for cookies, logs user in.
   onLoad = async () => {
     try {
       const userAuth = this.getCookies();
       if (userAuth) {
-        console.log("userAuth", userAuth);
-
         this.onSignIn(userAuth);
       }
     } catch (error) {
@@ -167,6 +194,7 @@ class Provider extends React.Component {
           onSignUp: this.onSignUp,
           onSignIn: this.onSignIn,
           onSignOut: this.onSignOut,
+          onProfileUpdate: this.onProfileUpdate,
           onLoad: this.onLoad
         }}
       >
